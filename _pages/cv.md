@@ -11,8 +11,8 @@ redirect_from:
 
 Education
 ======
-* B.S. in Earth and Space Sciences, University of Washington, 2019
 * Ph.D in Earth and Space Sciences, University of Washington, 2028 (expected)
+* B.S. in Earth and Space Sciences, University of Washington, 2019
 
 Work experience
 ======
