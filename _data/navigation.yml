@@ -6,8 +6,8 @@ main:
 #   - title: "Talks"
 #     url: /talks/
 #
-  - title: "Code"
-    url: "https://github.com/simonhansedasi"
+  - title: "Projects"
+    url: "/projects/"
 
 
 
