@@ -1,7 +1,7 @@
 ---
 title: "September  2022"
 collection: haikus
-permalink: /haikus/2022_08_september
+permalink: /haikus/2022_09_september
 
 ---
 ## 2022/09/01 #183
