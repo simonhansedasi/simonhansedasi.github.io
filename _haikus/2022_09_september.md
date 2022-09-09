@@ -4,6 +4,17 @@ collection: haikus
 permalink: /haikus/2022_09_september
 
 ---
+## 2022/09/08 #190
+Online training sucks \
+All I have to do today \
+AAAAAAAAAHHHHHH \
+
+
+## 2022/09/07 #189
+Sitting in a chair \
+Harnessing the sun's power \
+Look at what we've done
+
 ## 2022/09/06 #188
 Mystery phone call \
 She brings incredible news \
