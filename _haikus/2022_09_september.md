@@ -4,10 +4,65 @@ collection: haikus
 permalink: /haikus/2022_09_september
 
 ---
+## 2022/09/19 #201
+Learning how to teach \
+Is so boring when online \
+Tomorrow it starts!
+
+## 2022/09/18 #200
+Another pizza \
+It's never enough pizza \
+I love some pizza
+
+## 2022/09/17 #199
+Caribbean food \
+Not bad sandwiches and fries \
+Seeing some old friends
+
+## 2022/09/16 #198
+Time to take a nap \
+Puppies won't let me sleep, though \
+They need all the love
+
+## 2022/09/15 #197
+Violins play songs \
+But, these are different though \
+These ones are pictures
+
+## 2022/09/14 #196
+No jury duty \
+I would be skipped anyway \
+Whatever, let's code!
+
+## 2022/09/13 #195
+A week from today \
+I will be behind somehow \
+Scramble to catch up
+
+## 2022/09/12 #194
+Back to work Monday \
+So much empty code to do \
+Why will it not start?!
+
+## 2022/09/11 #193
+Morning, feeling fine \
+Make a long drive home today \
+Post-noon hangover
+
+## 2022/09/10 #192
+Picnic in the park \
+Charcoal flames are not burning \
+Now off to Meme's!
+
+## 2022/09/09 #191
+Working all day long \
+After a while, we discuss \
+Make plans to move on
+
 ## 2022/09/08 #190
 Online training sucks \
 All I have to do today \
-AAAAAAAAAHHHHHH \
+AAAAAAAAAHHHHHH
 
 
 ## 2022/09/07 #189
