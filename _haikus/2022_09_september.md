@@ -4,6 +4,43 @@ collection: haikus
 permalink: /haikus/2022_09_september
 
 ---
+## 2022/09/26 #208
+Meeting for advice \
+Where to go from here, what's next? \
+Reset, redo them
+
+## 2022/09/25 #207
+Yesterday was nice \
+Now for some serious chores \
+Okay, done, drinkies
+
+## 2022/09/24 #206
+Field trip cancelled, sad \
+I wasn't going to go... \
+That's no loss, I guess
+
+## 2022/09/23 #205
+Orientation \
+Not today, working from home \
+Code while I still can
+
+## 2022/09/22 #204
+Press to the Bee Gees \
+CPR training again \
+First aid's important
+
+## 2022/09/21 #203
+Hard to remember \
+What happened a week ago? \
+Oh yeah, more meetings
+
+
+## 2022/09/20 #202
+Here we go again \
+Forgot to sign in and write \
+This time I won't nap
+
+
 ## 2022/09/19 #201
 Learning how to teach \
 Is so boring when online \
