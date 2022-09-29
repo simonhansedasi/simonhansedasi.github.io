@@ -4,6 +4,16 @@ collection: haikus
 permalink: /haikus/2022_09_september
 
 ---
+## 2022/09/28 #210
+My first day of school \
+For the 18th year, this time \
+Wow, time really flies
+
+## 2022/09/27 #209
+One day remaining \
+Between me and my knowledge \
+Meet some more people
+
 ## 2022/09/26 #208
 Meeting for advice \
 Where to go from here, what's next? \
