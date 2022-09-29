@@ -4,6 +4,11 @@ collection: haikus
 permalink: /haikus/2022_09_september
 
 ---
+## 2022/09/29 #211
+Meeting with the group \
+Making plans, some sit quiet \
+Classes are going
+
 ## 2022/09/28 #210
 My first day of school \
 For the 18th year, this time \
