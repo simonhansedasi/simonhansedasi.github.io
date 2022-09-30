@@ -4,6 +4,11 @@ collection: haikus
 permalink: /haikus/2022_09_september
 
 ---
+## 2022/09/30 #212
+Early morning maths \
+Code to plot fancy functions \
+Now go find zero
+
 ## 2022/09/29 #211
 Meeting with the group \
 Making plans, some sit quiet \
