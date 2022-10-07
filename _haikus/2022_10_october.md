@@ -4,6 +4,11 @@ collection: haikus
 permalink: /haikus/2022_10_october
 
 ---
+## 2022/10/06 #218
+Stay up late at night \
+Meeting with fellow students \
+One more job to do
+
 ## 2022/10/05 #217
 A long day today \
 It's supposed to be over \
