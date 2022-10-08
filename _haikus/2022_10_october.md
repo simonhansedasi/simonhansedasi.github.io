@@ -4,6 +4,11 @@ collection: haikus
 permalink: /haikus/2022_10_october
 
 ---
+## 2022/10/07 #219
+Bright and early quiz \
+Proficiency determined \
+Now drive through some smoke
+
 ## 2022/10/06 #218
 Stay up late at night \
 Meeting with fellow students \
