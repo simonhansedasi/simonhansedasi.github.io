@@ -4,6 +4,23 @@ collection: haikus
 permalink: /haikus/2022_10_october
 
 ---
+## 2022/10/10 #222
+Euler and error \
+Does it ever end? Hope not \
+Combine math and code
+
+
+## 2022/10/09 #221
+Drive home, then drive out \
+Slay monsters, save my marriage \
+I missed my kitty
+
+## 2022/10/08 #220
+Sleeping in is nice \
+Everyone typing upstairs \
+Plan out my future
+
+
 ## 2022/10/07 #219
 Bright and early quiz \
 Proficiency determined \
