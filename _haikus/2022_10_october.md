@@ -4,6 +4,56 @@ collection: haikus
 permalink: /haikus/2022_10_october
 
 ---
+## 2022/10/20 #232
+Thursdays are meetings \
+Oh dear god when am I free \
+Free to study math
+
+## 2022/10/19 #231
+Homework is due now \
+Better get started on it \
+Integrate, step back
+
+## 2022/10/18 #230
+Office can stay there  \
+I will work at my own pace  \
+Oops, I fell asleep
+
+## 2022/10/17 #229
+Early morning bus \
+These lectures are recorded \
+Why go the hard way?
+
+## 2022/10/16 #228
+Resolve the attack \
+Hitting the invisible \
+Rules are rules I guess
+
+## 2022/10/15 #227
+A long day drive home \
+Listened and talked past two days \
+Now I need a nap
+
+## 2022/10/14 #226
+He sits, she sleeps, good. \
+I love these dogs, but sometimes... \
+I love these dogs more
+
+## 2022/10/13 #225
+Bubby gives me licks \
+He is such a schmoopy boy \
+Oh yeah, it's dinner
+
+## 2022/10/12 #224
+Today is special \
+It is my sisters birthday \
+I guess I'll text her
+
+## 2022/10/11 #223
+Book shelves over there \
+Television to my right \
+This is what I see
+
 ## 2022/10/10 #222
 Euler and error \
 Does it ever end? Hope not \
