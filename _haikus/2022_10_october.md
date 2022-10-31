@@ -4,6 +4,56 @@ collection: haikus
 permalink: /haikus/2022_10_october
 
 ---
+## 2022/10/30 #242
+Oof, what did I do? \
+Oh yeah, I can't breathe at night \
+I'll get that looked at
+
+## 2022/10/29 #241
+Time to party, yeah!
+Slow to start, but rage once more \
+Oh hey, I know you
+
+## 2022/10/28 #240
+The days are going \
+Ever faster, shorter now \
+Time is not constant
+
+## 2022/10/27 #239
+Meet and present cracks \
+Ice volcanoes? So awesome \
+Argue about ice
+
+## 2022/10/26 #238
+Midweek once again \
+Race to and fro, learn a trick \
+Nothing can stop me!
+
+## 2022/10/25 #237
+Laying on the couch \
+Working from home doesn't work \
+I need more structure
+
+## 2022/10/24 #236
+Start the race again \
+Losing my lead from the pack \
+Math is really hard
+
+## 2022/10/23 #235
+What happened today? \
+Oh yeah, super cool date night \
+Re-live prom, with rocks
+
+## 2022/10/22 #234
+Bring the dogs outside \
+Viihm sajab kogu paeva \
+Oi oi oi, lets go!
+
+## 2022/10/21 #233
+It's Friday, Friday \
+Gotta get down on Friday \
+Wait, didn't I do this?
+
 ## 2022/10/20 #232
 Thursdays are meetings \
 Oh dear god when am I free \
