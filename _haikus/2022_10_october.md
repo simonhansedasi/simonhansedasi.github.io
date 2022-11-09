@@ -4,6 +4,11 @@ collection: haikus
 permalink: /haikus/2022_10_october
 
 ---
+## 2022/10/31 #243
+Ghosts and ghouls abound \
+Demanding candy payments \
+Pay them or scrape egg
+
 ## 2022/10/30 #242
 Oof, what did I do? \
 Oh yeah, I can't breathe at night \
