@@ -4,6 +4,12 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/09 #252
+Searching for some trains \
+The bell should go ding dong ding \
+So, where is it now?
+
+
 ## 2022/11/08 #251
 Coding the axes \
 The beast is finally slain \
