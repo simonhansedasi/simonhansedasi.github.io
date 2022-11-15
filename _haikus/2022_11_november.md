@@ -4,6 +4,31 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/14 #258
+Discuss the merits \
+Propagandized grandmothers \
+Now anarchy reigns! 
+
+## 2022/11/13 #257
+Sleeping in this morn \
+Kitty went to climb, now wake \
+Just kidding, sleep in!
+
+## 2022/11/12 #256
+Being secretive \
+I'm a hidden chancellor \
+Some time soon we'll win
+
+## 2022/11/11 #254
+Today is for vets \
+Fuck all the military \
+Death should not be praised
+
+## 2022/11/10 #253
+At colloquium \
+Please don't fall asleep right now \
+Tomorrow is rest
+
 ## 2022/11/09 #252
 Searching for some trains \
 The bell should go ding dong ding \
