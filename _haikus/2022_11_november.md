@@ -4,6 +4,11 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/16 #261
+Magasin hilja \
+Koerad vooris muga \
+Jää igavesti!
+
 ## 2022/11/16 #260
 Kolmapäev täna \
 Homme ei tule kiire \
