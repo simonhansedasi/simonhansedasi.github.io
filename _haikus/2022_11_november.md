@@ -4,10 +4,20 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/16 #260
+Kolmapäev täna \
+Homme ei tule kiire \
+Ma tean minu parim
+
+## 2022/11/15 #259
+Match the ticks and lines \
+Import export the figures \
+Impressively done
+
 ## 2022/11/14 #258
 Discuss the merits \
 Propagandized grandmothers \
-Now anarchy reigns! 
+Now anarchy reigns!
 
 ## 2022/11/13 #257
 Sleeping in this morn \
