@@ -4,6 +4,11 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/17 #262
+Õpin oskusi \
+Harjutan sõpredega \
+Õppemine koos
+
 ## 2022/11/16 #261
 Magasin hilja \
 Koerad vooris muga \
