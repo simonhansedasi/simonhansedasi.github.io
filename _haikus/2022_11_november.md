@@ -4,6 +4,26 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/21 #266
+Touch up some figures \
+Great news, we can start writing! \
+Well, you write, he fix 
+
+## 2022/11/20 #265
+From a hazy cloud \
+Twin blades drawn twirling and slice \
+Can you hear me now?
+
+## 2022/11/19 #264
+Early departure \
+Already missing Kitty \
+Let's go out Desna!
+
+## 2022/11/18 #263
+Explore the mansion \
+Don't touch, everything is trapped \
+Rogue got the sorc killed
+
 ## 2022/11/17 #262
 Õpin oskusi \
 Harjutan sõpredega \
