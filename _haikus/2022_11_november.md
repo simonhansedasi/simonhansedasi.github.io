@@ -4,10 +4,15 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/22 #267
+Kirjuta sõnad \
+Parandage need sõnad! \
+Kui palju on jääd?
+
 ## 2022/11/21 #266
 Touch up some figures \
 Great news, we can start writing! \
-Well, you write, he fix 
+Well, you write, he fix
 
 ## 2022/11/20 #265
 From a hazy cloud \
