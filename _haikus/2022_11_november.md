@@ -4,6 +4,11 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/23 #268
+Frequency scanning \
+Intensity up and down \
+Still can't find a train
+
 ## 2022/11/22 #267
 Kirjuta sõnad \
 Parandage need sõnad! \
