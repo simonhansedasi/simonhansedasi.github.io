@@ -4,6 +4,27 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/27 #272
+Changing of spirits \
+Tradition and memories \
+Building together
+
+
+## 2022/11/26 #271
+Separate again \
+Trekking the woods in steel beasts \
+Vacation resting
+
+## 2022/11/25 #270
+Hungover? Not me \
+Traditions are how we go \
+Growing up and out
+
+## 2022/11/24 #269
+Rise before the sun \
+Drinking long before dinner \
+Now what's for dessert?
+
 ## 2022/11/23 #268
 Frequency scanning \
 Intensity up and down \
