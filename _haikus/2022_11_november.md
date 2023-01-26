@@ -4,6 +4,11 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/28 #273
+Oh how the time goes \
+Where did it go though, just now? \
+I am so confused
+
 ## 2022/11/27 #272
 Changing of spirits \
 Tradition and memories \
