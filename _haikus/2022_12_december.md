@@ -5,7 +5,9 @@ permalink: /haikus/2022_11_december
 
 ---
 ## 2022/12/07 #282
-
+Cooooofee Cooooooooooooffee more \
+coffe coffee coffe please \
+covfefe
 
 ## 2022/12/06 #281
 It's the sixth today \
