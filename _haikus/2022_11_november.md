@@ -4,6 +4,16 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
+## 2022/11/30 #275
+Polygons decide \
+Each face will tell a story \
+Take a chance and roll
+
+## 2022/11/29 #274
+The month is ending \
+Leaves have changed and now fallen \
+Time marches forward
+
 ## 2022/11/28 #273
 Oh how the time goes \
 Where did it go though, just now? \
