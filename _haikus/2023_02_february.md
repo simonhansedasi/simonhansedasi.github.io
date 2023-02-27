@@ -4,11 +4,15 @@ collection: haikus
 permalink: /haikus/2023_02_february
 
 ---
+## 2023/02/26 #362
+Majal on vaja \
+töö, et jääda eluslik \
+Mina magan nüüd
 
 ## 2023/02/25 #361
 Mercenaries fight \
 Loot the dungeon for a quest \
-Off to the dark swamps! 
+Off to the dark swamps!
 
 ## 2023/02/24 #360
 Tana on eesti \
