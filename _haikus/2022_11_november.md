@@ -4,77 +4,73 @@ collection: haikus
 permalink: /haikus/2022_11_november
 
 ---
-## 2022/11/30 #275
+## 2022/11/30 #274
 Polygons decide \
 Each face will tell a story \
 Take a chance and roll
 
-## 2022/11/29 #274
-The month is ending \
-Leaves have changed and now fallen \
-Time marches forward
 
-## 2022/11/28 #273
+## 2022/11/29 #273
 Oh how the time goes \
 Where did it go though, just now? \
 I am so confused
 
-## 2022/11/27 #272
+## 2022/11/28 #272
 Changing of spirits \
 Tradition and memories \
 Building together
 
-## 2022/11/26 #271
+## 2022/11/27 #271
 Separate again \
 Trekking the woods in steel beasts \
 Vacation resting
 
-## 2022/11/25 #270
+## 2022/11/5+ #270
 Hungover? Not me \
 Traditions are how we go \
 Growing up and out
 
-## 2022/11/24 #269
+## 2022/11/25 #269
 Rise before the sun \
 Drinking long before dinner \
 Now what's for dessert?
 
-## 2022/11/23 #268
+## 2022/11/24 #268
 Frequency scanning \
 Intensity up and down \
 Still can't find a train
 
-## 2022/11/22 #267
+## 2022/11/23 #267
 Kirjuta sõnad \
 Parandage need sõnad! \
 Kui palju on jääd?
 
-## 2022/11/21 #266
+## 2022/11/22 #266
 Touch up some figures \
 Great news, we can start writing! \
 Well, you write, he fix
 
-## 2022/11/20 #265
+## 2022/11/21 #265
 From a hazy cloud \
 Twin blades drawn twirling and slice \
 Can you hear me now?
 
-## 2022/11/19 #264
+## 2022/11/20 #264
 Early departure \
 Already missing Kitty \
 Let's go out Desna!
 
-## 2022/11/18 #263
+## 2022/11/19 #263
 Explore the mansion \
 Don't touch, everything is trapped \
 Rogue got the sorc killed
 
-## 2022/11/17 #262
+## 2022/11/18 #262
 Õpin oskusi \
 Harjutan sõpredega \
 Õppemine koos
 
-## 2022/11/16 #261
+## 2022/11/17 #261
 Magasin hilja \
 Koerad vooris muga \
 Jää igavesti!
