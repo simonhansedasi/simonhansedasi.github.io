@@ -24,7 +24,6 @@ Changing of spirits \
 Tradition and memories \
 Building together
 
-
 ## 2022/11/26 #271
 Separate again \
 Trekking the woods in steel beasts \
@@ -105,58 +104,58 @@ Being secretive \
 I'm a hidden chancellor \
 Some time soon we'll win
 
-## 2022/11/11 #254
+## 2022/11/11 #255
 Today is for vets \
 Fuck all the military \
 Death should not be praised
 
-## 2022/11/10 #253
+## 2022/11/10 #254
 At colloquium \
 Please don't fall asleep right now \
 Tomorrow is rest
 
-## 2022/11/09 #252
+## 2022/11/09 #253
 Searching for some trains \
 The bell should go ding dong ding \
 So, where is it now?
 
 
-## 2022/11/08 #251
+## 2022/11/08 #252
 Coding the axes \
 The beast is finally slain \
 Now time for a nap
 
-## 2022/11/07 #250
+## 2022/11/07 #251
 Morning meet and plan \
 Discuss some stats and questions \
 Where do we go now?
 
-## 2022/11/06 #249
+## 2022/11/06 #250
 Gain ancient wisdom \
 Restore order to the storm? \
 Or avenge a ghost?
 
-## 2022/11/05 #248
+## 2022/11/05 #249
 First day off in weeks \
 On the couch where I belong \
 Prepare tomorrow
 
-## 2022/11/04 #247
+## 2022/11/04 #248
 Time is hanging down \
 I can't do this anymore \
 Drop that class so fast
 
-## 2022/11/03 #246
+## 2022/11/03 #247
 Stabbed in the shoulder \
 Disease courses through my veins \
 Get sick purposely
 
-## 2022/11/02 #245
+## 2022/11/02 #246
 I really need help \
 Brain refuses to do math \
 Assistance granted
 
-## 2022/11/01 #244
+## 2022/11/01 #245
 Cold wind blasts with rain \
 The sun rises, but hidden \
 Gray skies for today
