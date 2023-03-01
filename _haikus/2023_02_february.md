@@ -4,6 +4,16 @@ collection: haikus
 permalink: /haikus/2023_02_february
 
 ---
+## 2023/02/28 #364
+Another loop wraps \
+Around the sun one more time \
+What to do this time?
+
+## 2023/02/27 #363
+Discuss the weighting \
+At which level to apply? \
+Gotta try them all!
+
 ## 2023/02/26 #362
 Majal on vaja \
 töö, et jääda eluslik \
