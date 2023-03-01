@@ -7,7 +7,7 @@ permalink: /haikus/2023_02_february
 ## 2023/02/28 #364
 Another loop wraps \
 Around the sun one more time \
-What to do this time?
+What to do this trip?
 
 ## 2023/02/27 #363
 Discuss the weighting \
