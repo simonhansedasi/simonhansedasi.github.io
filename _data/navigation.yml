@@ -22,6 +22,10 @@ main:
   - title: "Haikus"
     url: /haikus/
 
+
+  - title: "Limericks"
+    url: /limericks/
+
   - title: "CV"
     url: /cv/
 #
