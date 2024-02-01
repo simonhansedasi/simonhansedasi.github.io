@@ -197,6 +197,9 @@ collections:
   haikus:
     output: true
     permalink: /:collection/:path/
+  projects:
+    output: true
+    permalink: /:collection/:path/
   haikus2:
     output: true
     permalink: /:collection/:path/
@@ -260,6 +263,14 @@ defaults:
   - scope:
       path: ""
       type: haikus
+    values:
+      layout: single
+      author_profile: true
+      share: false
+  # _projects
+  - scope:
+      path: ""
+      type: projects
     values:
       layout: single
       author_profile: true

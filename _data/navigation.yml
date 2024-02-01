@@ -23,8 +23,8 @@ main:
     url: /haikus/
 
 
-  - title: "Limericks"
-    url: /limericks/
+  # - title: "Limericks"
+  #   url: /moar_haiks/
 
   - title: "CV"
     url: /cv/
