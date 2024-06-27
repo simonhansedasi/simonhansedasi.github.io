@@ -37,7 +37,7 @@
 
 
 
-  <meta property="og:description" content="  ">
+  <meta property="og:description" content="Farinotti et al. 2019 produced thickness maps for glaciers contained in the Randolph Glacier Inventory, a.k.a. RGI. This notebook projects and plots the thickness map into a readable image.  ">
 
 
 
@@ -248,9 +248,48 @@
     
       <h1 class="page__title">Glacier Mapping</h1>
     
-    <p align="center">
-  <img src="/images/glac_map.png" />
+    <p>Farinotti et al. 2019 produced thickness maps for glaciers contained in the Randolph Glacier Inventory, a.k.a. RGI. This notebook projects and plots the thickness map into a readable image.</p>
+<p align="center">
+  <img src="/images/glac_map.png" width="500" />
 </p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">file_name</span> <span class="o">=</span> <span class="s">'RGI60-02.04403_thickness.tif'</span>
+<span class="kn">import</span> <span class="nn">rasterio</span> <span class="k">as</span> <span class="n">rio</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="k">with</span> <span class="n">rio</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+            <span class="n">thickness</span> <span class="o">=</span> <span class="n">src</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">height</span> <span class="o">=</span> <span class="n">thickness</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">width</span> <span class="o">=</span> <span class="n">thickness</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">height</span><span class="p">))</span>
+            <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">rio</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">xy</span><span class="p">(</span><span class="n">src</span><span class="p">.</span><span class="n">transform</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+            <span class="n">lons</span><span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+            <span class="n">lats</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+<span class="n">thickness</span><span class="p">[</span><span class="n">thickness</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'nan'</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Transformer</span>
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">Transformer</span><span class="p">.</span><span class="n">from_crs</span><span class="p">(</span><span class="s">"WGS 84 / UTM zone 10N"</span><span class="p">,</span> <span class="s">"EPSG:4326"</span><span class="p">)</span>
+<span class="n">lons</span><span class="p">,</span> <span class="n">lats</span> <span class="o">=</span> <span class="n">transformer</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span><span class="n">lats</span><span class="p">)</span>
+<span class="c1"># something gets scrambled here, reassign lat/lon
+</span><span class="nb">long</span> <span class="o">=</span> <span class="n">lats</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">lons</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">patch</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">'w'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">long</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s">'.'</span><span class="p">,</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">thickness</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s">'viridis'</span><span class="p">,</span>
+           <span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">patch</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">'w'</span><span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">cb</span><span class="p">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">'Thickness (m)'</span><span class="p">,</span><span class="n">size</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Latitude'</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Longitude'</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'RGI60-02.04403 Thickness estimated by Farinotti et. al. (2019)</span><span class="se">\n</span><span class="s"> n = '</span> <span class="o">+</span>
+          <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">unique</span><span class="p">(</span><span class="n">thickness</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="p">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">thickness</span><span class="p">)]).</span><span class="n">flatten</span><span class="p">()))</span><span class="o">+</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span>
+          <span class="s">'$\mu$ = '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">unique</span><span class="p">(</span><span class="n">thickness</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="p">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">thickness</span><span class="p">)])))</span> <span class="o">+</span> <span class="s">' m'</span><span class="p">,</span>
+          <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+</code></pre></div></div>
 
   </div>
 </div>
