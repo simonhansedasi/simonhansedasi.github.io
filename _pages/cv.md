@@ -11,8 +11,8 @@ redirect_from:
 
 Education
 ======
-* M.S. Earth and Space Sciences, University of Washington, 2024 (expected)
-  * Thesis: A Data Driven Estimate of Glacier Thickness
+* M.S. Earth and Space Sciences, University of Washington, 2024
+  * Thesis: A Data Driven Estimate of Glacier Thicknesses Reveals the Influence of Ice Shelves and Other Ocean Interactions
 * B.S. Earth and Space Sciences, University of Washington, 2019
   * Minor in Mathematical Physics and Estonian
 
