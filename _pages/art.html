@@ -1,0 +1,44 @@
+---
+layout: archive
+title: "Art"
+permalink: /art/
+author_profile: true
+---
+{% assign haikus = site.data.haikus %}
+{% assign random_haiku = haikus | sample %}
+
+<div class="random-haiku">
+
+  <h2>Random Haiku</h2>
+  To make my 33rd year more interesting, and hopefully prevent it from blending in with all the others, I wrote a haiku to reflect every day. Enjoy a randomly selected poem from that year. To view the full catalog, click <a href="/haikus/">here</a>.
+  <br>
+
+  Inspired by  <a href="https://glasscannonnetwork.com/">Skid Maher of the GCP</a>, the original HaikuBoy.
+  <p><strong>Date:</strong> {{ random_haiku.date }}</p>
+  <p><strong>Number:</strong> {{ random_haiku.number }}</p>
+  <pre>{{ random_haiku.content }}</pre>
+</div>
+
+<hr>
+
+<h2>Random Image</h2>
+Sometimes I take a break from visualizing data to tinker with mathematical art. Here is a visualization of a random complex trigonometric function.
+{% assign art_files = "" | split: "" %}
+
+{% for file in site.static_files %}
+  {% if file.path contains '_art' and file.extname == '.gif' %}
+    {% assign art_files = art_files | push: file %}
+  {% endif %}
+{% endfor %}
+
+{% assign image_count = art_files | size %}
+
+
+{% if image_count > 0 %}
+  {% assign random_image_index = 'now' | date: "%s" | modulo: image_count %}
+  {% assign random_image = art_files[random_image_index] %}
+
+  <img src="{{ random_image.path }}" alt="Random Art Image">
+{% else %}
+  <p>No images available.</p>
+{% endif %}
