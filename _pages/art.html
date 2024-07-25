@@ -4,41 +4,94 @@ title: "Art"
 permalink: /art/
 author_profile: true
 ---
-{% assign haikus = site.data.haikus %}
-{% assign random_haiku = haikus | sample %}
 
-<div class="random-haiku">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Page with Random Haiku and Image</title>
+  <style>
+    /* Optional: Add some basic styling */
+    #haiku-container, #image-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="random-haiku">
+    <h2>Random Haiku</h2>
+    To make my 33rd year more interesting, and hopefully prevent it from blending in with all the others, I wrote a haiku to reflect every day. Enjoy a randomly selected poem from that year. To view the full catalog, click <a href="/haikus/">here</a>.
+    <br>
+    Inspired by <a href="https://glasscannonnetwork.com/">Skid Maher of the GCP</a>, the original HaikuBoy.
+  </div>
 
-  <h2>Random Haiku</h2>
-  To make my 33rd year more interesting, and hopefully prevent it from blending in with all the others, I wrote a haiku to reflect every day. Enjoy a randomly selected poem from that year. To view the full catalog, click <a href="/haikus/">here</a>.
-  <br>
+  <!-- Placeholder for the haiku -->
+  <div id="haiku-container"></div>
 
-  Inspired by  <a href="https://glasscannonnetwork.com/">Skid Maher of the GCP</a>, the original HaikuBoy.
-  <p><strong>Date:</strong> {{ random_haiku.date }}</p>
-  <p><strong>Number:</strong> {{ random_haiku.number }}</p>
-  <pre>{{ random_haiku.content }}</pre>
-</div>
-
-<hr>
-
-<h2>Random Image</h2>
-Sometimes I take a break from visualizing data to tinker with mathematical art. Here is a visualization of a random complex trigonometric function.
-{% assign art_files = "" | split: "" %}
-
-{% for file in site.static_files %}
-  {% if file.path contains '_art' and file.extname == '.gif' %}
-    {% assign art_files = art_files | push: file %}
-  {% endif %}
-{% endfor %}
-
-{% assign image_count = art_files | size %}
+  <hr>
 
 
-{% if image_count > 0 %}
-  {% assign random_image_index = 'now' | date: "%s" | modulo: image_count %}
-  {% assign random_image = art_files[random_image_index] %}
+  <h2>Random Image</h2>
+  Sometimes I take a break from visualizing data to tinker with mathematical art. Here is a visualization of a random complex trigonometric function.
 
-  <img src="{{ random_image.path }}" alt="Random Art Image">
-{% else %}
-  <p>No images available.</p>
-{% endif %}
+  <!-- Placeholder for the image -->
+  <div id="image-container"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      async function fetchRandomContent() {
+        try {
+          // Fetch data from the JSON file
+          const response = await fetch('/assets/art.json');
+          if (!response.ok) throw new Error('Failed to fetch data');
+
+          const data = await response.json();
+
+          // Log the fetched data for debugging
+          console.log('Fetched data:', data);
+
+          // Extract haikus and images
+          const haikus = data.haikus;
+          const images = data.images;
+
+          if (!Array.isArray(haikus) || !Array.isArray(images)) {
+            throw new Error('Data is not in the expected format');
+          }
+
+          // Select random haiku and image
+          const randomHaiku = haikus[Math.floor(Math.random() * haikus.length)];
+          const randomImage = images[Math.floor(Math.random() * images.length)];
+
+          // Log the selected haiku and image for debugging
+          console.log('Selected haiku:', randomHaiku);
+          console.log('Selected image:', randomImage);
+
+          // Convert newlines to <br> tags
+          const formattedContent = randomHaiku.content.replace(/\n/g, '<br>');
+
+          // Update HTML with the fetched data
+          document.getElementById('haiku-container').innerHTML = `
+            <p><strong>Date:</strong> ${randomHaiku.date}</p>
+            <p><strong>Number:</strong> ${randomHaiku.number}</p>
+            <p>${formattedContent}</p>
+          `;
+          document.getElementById('image-container').innerHTML = `<img src="${randomImage}" alt="Random Art Image">`;
+
+        } catch (error) {
+          console.error('Error fetching content:', error);
+          document.getElementById('haiku-container').innerHTML = '<p>Sorry, there was an error fetching the haiku.</p>';
+          document.getElementById('image-container').innerHTML = '<p>Sorry, there was an error fetching the image.</p>';
+        }
+      }
+
+      fetchRandomContent();
+    });
+  </script>
+
+
+
+
+
+</body>
+</html>
