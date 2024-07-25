@@ -31,7 +31,6 @@ author_profile: true
 
   <hr>
 
-
   <h2>Random Image</h2>
   Sometimes I take a break from visualizing data to tinker with mathematical art. Here is a visualization of a random complex trigonometric function.
 
@@ -42,18 +41,20 @@ author_profile: true
     document.addEventListener('DOMContentLoaded', function() {
       async function fetchRandomContent() {
         try {
+          console.log('Starting fetch for JSON data');
+
           // Fetch data from the JSON file
           const response = await fetch('https://simonhansedasi.github.io/assets/art.json');
           if (!response.ok) throw new Error('Failed to fetch data');
 
           const data = await response.json();
-
-          // Log the fetched data for debugging
           console.log('Fetched data:', data);
 
           // Extract haikus and images
           const haikus = data.haikus;
           const images = data.images;
+          console.log('Extracted haikus:', haikus);
+          console.log('Extracted images:', images);
 
           if (!Array.isArray(haikus) || !Array.isArray(images)) {
             throw new Error('Data is not in the expected format');
@@ -63,7 +64,6 @@ author_profile: true
           const randomHaiku = haikus[Math.floor(Math.random() * haikus.length)];
           const randomImage = images[Math.floor(Math.random() * images.length)];
 
-          // Log the selected haiku and image for debugging
           console.log('Selected haiku:', randomHaiku);
           console.log('Selected image:', randomImage);
 
