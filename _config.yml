@@ -90,10 +90,10 @@ author:
   avatar           : "profile.jpg"
   bio              : " "
   location         : "Seattle, WA"
-  employer         : "University of Washington"
+  # employer         : "University of Washington"
   # pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "https://scholar.google.com/citations?user=rIeiXcEAAAAJ&hl=en"
-  email            : "sa42@uw.edu"
+  # googlescholar    : "https://scholar.google.com/citations?user=rIeiXcEAAAAJ&hl=en"
+  email            : "simonhansedasi@gmail.com"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -108,8 +108,8 @@ author:
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         :
-  orcid            : "https://orcid.org/my-orcid?orcid=0000-0003-0296-2740"
+  # linkedin         :  "simon-hans-edasi"
+  # orcid            : "https://orcid.org/my-orcid?orcid=0000-0003-0296-2740"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username

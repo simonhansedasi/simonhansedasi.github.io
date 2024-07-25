@@ -12,7 +12,7 @@ redirect_from:
 
 Summary
 ======
-I combine the inquisitive spirit of a scientist with the precise hands of a maintenance technician form a unique skillset capable of achieving anything. My background lies in geophysics, statistics, and data science, and I seek to tackle complex problems facing our communities. Experienced in fast paced environments and prioritizing for deadlines, I am seeking a challenge for which to apply my skills and help others.
+I combine the inquisitive spirit of a scientist with the precise skill of a maintenance technician form a unique skillset capable of achieving anything. My background lies in geophysics, statistics, and data science, and I seek to tackle complex problems facing our communities. Experienced in fast paced environments and prioritizing for deadlines, I am seeking a challenge for which to apply my skills and help others.
 
 Education
 ======
