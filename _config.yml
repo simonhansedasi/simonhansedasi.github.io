@@ -305,6 +305,7 @@ plugins:
   - jekyll-feed
   - jekyll-redirect-from
   - jekyll-remote-theme
+  - jekyll-asset-pipeline
 # mimic GitHub Pages with --safe
 
 whitelist:
