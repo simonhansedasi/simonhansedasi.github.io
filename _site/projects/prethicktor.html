@@ -37,7 +37,7 @@
 
 
 
-  <meta property="og:description" content="Accurate estimation of glacier volume is essential for effective water resource management and sea-level rise projections, however, traditional methods for assessing glacier thickness are costly and labor-intensive. This study presents a novel approach to estimating glacier thickness, utilizing neural networks trained on thickness data from the Glacier Thickness Database (GlaThiDa) and surface features from the Randolph Glacier Inventory (RGI). A regression analysis is conducted on a subset of GlaThiDa data, which is then used to infer thicknesses for RGI glaciers. This study also addresses challenges in matching data between GlaThiDa and RGI, employing distance and area thresholds to ensure accuracy. The trained neural network model demonstrates statistically similar results to previous physics-based models, highlighting the potential of data-driven approaches in estimating global glacier volume. Our findings emphasize the importance of models versus underlying data in enhancing our understanding of glacier volumes. This study provides a comprehensive comparison with existing global estimates and discusses the implications of its data-driven approach for future glacier research.  ">
+  <meta property="og:description" content="An accurate estimation of glacier volume is essential for effective water resourcemanagement and sea-level rise projections, however, traditional methods for assessing glacierthickness are costly and labor-intensive. This study presents a novel approach to estimatingglacier thickness utilizing neural networks trained on thickness data from the Glacier ThicknessDatabase (GlaThiDa) and glacier attributes, such as area or slope, from the Randolph GlacierInventory (RGI). A regression analysis is conducted on a subset of GlaThiDa data, which is thenused to infer thicknesses for glaciers in the RGI dataset. Challenges in matching GlaThiDathickness data to RGI attributes are addressed, employing distance and area thresholds to en-sure the matched GlaThiDa thickness is representative of RGI attributes. Furthermore, thisstudy provides a comprehensive comparison with existing global estimates. Notably, this studyhas lower estimates of volume for shelf and marine-terminating glaciers due to a sparsity ofavailable training data. These findings suggest the neural network effectively models a worldwithout ice shelves and their buttressing effect on ice flow. This departure from previous meth-ods and estimates emphasizes the importance of improved observations of glacier thicknessdata, particularly in marine environments  ">
 
 
 
@@ -151,7 +151,7 @@
             <li class="masthead__menu-item"><a href="http://localhost:4000/projects/">Projects</a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:4000/haikus/">Haikus</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/art/">Art</a></li>
           
             
             <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
@@ -196,11 +196,9 @@
         <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Seattle, WA</li>
       
       
-        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> University of Washington</li>
       
       
-      
-        <li><a href="mailto:sa42@uw.edu"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+        <li><a href="mailto:simonhansedasi@gmail.com"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
       
       
        
@@ -228,11 +226,7 @@
       
       
       
-        <li><a href="https://scholar.google.com/citations?user=rIeiXcEAAAAJ&hl=en"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
       
-      
-      
-        <li><a href="https://orcid.org/my-orcid?orcid=0000-0003-0296-2740"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
       
       
       
@@ -248,9 +242,23 @@
     
       <h1 class="page__title">Glacier Thickness Predictor</h1>
     
-    <p>Accurate estimation of glacier volume is essential for effective water resource management and sea-level rise projections, however, traditional methods for assessing glacier thickness are costly and labor-intensive. This study presents a novel approach to estimating glacier thickness, utilizing neural networks trained on thickness data from the Glacier Thickness Database (GlaThiDa) and surface features from the Randolph Glacier Inventory (RGI). A regression analysis is conducted on a subset of GlaThiDa data, which is then used to infer thicknesses for RGI glaciers. This study also addresses challenges in matching data between GlaThiDa and RGI, employing distance and area thresholds to ensure accuracy. The trained neural network model demonstrates statistically similar results to previous physics-based models, highlighting the potential of data-driven approaches in estimating global glacier volume. Our findings emphasize the importance of models versus underlying data in enhancing our understanding of glacier volumes. This study provides a comprehensive comparison with existing global estimates and discusses the implications of its data-driven approach for future glacier research.</p>
+    <p>An accurate estimation of glacier volume is essential for effective water resource
+management and sea-level rise projections, however, traditional methods for assessing glacier
+thickness are costly and labor-intensive. This study presents a novel approach to estimating
+glacier thickness utilizing neural networks trained on thickness data from the Glacier Thickness
+Database (GlaThiDa) and glacier attributes, such as area or slope, from the Randolph Glacier
+Inventory (RGI). A regression analysis is conducted on a subset of GlaThiDa data, which is then
+used to infer thicknesses for glaciers in the RGI dataset. Challenges in matching GlaThiDa
+thickness data to RGI attributes are addressed, employing distance and area thresholds to en-
+sure the matched GlaThiDa thickness is representative of RGI attributes. Furthermore, this
+study provides a comprehensive comparison with existing global estimates. Notably, this study
+has lower estimates of volume for shelf and marine-terminating glaciers due to a sparsity of
+available training data. These findings suggest the neural network effectively models a world
+without ice shelves and their buttressing effect on ice flow. This departure from previous meth-
+ods and estimates emphasizes the importance of improved observations of glacier thickness
+data, particularly in marine environments</p>
 <p align="center">
-  <img src="/images/scale.png" width="500" />
+  <img src="/images/discrepancy_boxplot.png" width="500" />
 </p>
 
   </div>

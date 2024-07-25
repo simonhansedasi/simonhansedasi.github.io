@@ -19,12 +19,12 @@ main:
   #   url: /haikus2/
 #
 
-  - title: "Haikus"
-    url: /haikus/
+  # - title: "Haikus"
+  #   url: /haikus/
 
 
-  # - title: "Limericks"
-  #   url: /moar_haiks/
+  - title: "Art"
+    url: /art/
 
   - title: "CV"
     url: /cv/

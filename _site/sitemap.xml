@@ -55,6 +55,9 @@
 <loc>http://localhost:4000/archive-layout-with-content/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/art/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/categories/</loc>
 </url>
 <url>
@@ -67,7 +70,7 @@
 <loc>http://localhost:4000/haikus/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/haikus2/</loc>
+<loc>http://localhost:4000/haikus/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/markdown/</loc>
