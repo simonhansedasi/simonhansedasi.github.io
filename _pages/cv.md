@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-<a href="{{ '/assets/edasi_CV.pdf' }}" download>Printer Friendly Version</a>
+<a href="{{ '/assets/edasi_CV.pdf' }}" target="_blank">Printer Friendly Version</a>
 
 Summary
 ======
