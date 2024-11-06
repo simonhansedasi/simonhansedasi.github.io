@@ -9,45 +9,84 @@ author_profile: true
 <body>
     <h1>Why don't you play a...</h1>
     <div id="character-container">
-        Loading character data...
+        Loading...
     </div>
 
     <script>
-      async function loadCharacter() {
-          try {
-              const response = await fetch("https://char-gen.onrender.com/generate_character", {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json'
-                  }
-              });
+        async function loadCharacter() {
+            document.getElementById("character-container").innerHTML = "Generating character...";
 
-              const characterData = await response.json();
+            // Define the desired order for stats
+            const statOrder = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
 
-              // Reorder stats manually
-              const orderedStats = ["STR", "DEX", "CON", "INT", "WIS", "CHA"].map(stat => ({
-                  stat: stat,
-                  value: characterData.stats[stat]
-              }));
+            try {
+                // First fetch: main character data without background
+                const response = await fetch("https://char-gen.onrender.com/generate_character", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
 
-              // Populate the HTML as before
-              document.getElementById("character-container").innerHTML = `
-                  <h2>${characterData.species} ${characterData.class}</h2>
-                  <p><strong>Background:</strong> ${characterData.background}</p>
-                  <p><strong>Character Background:</strong></p>
-                  <div>${characterData.character_background}</div>
-                  <h3>Stats:</h3>
-                  <ul>
-                      ${orderedStats.map(({stat, value}) => `<li>${stat}: ${value}</li>`).join('')}
-                  </ul>
-              `;
-          } catch (error) {
-              console.error("Error loading character:", error);
-              document.getElementById("character-container").innerText = "Error loading character data.";
-          }
-      }
+                const characterData = await response.json();
 
+                // Debugging: Log the characterData to inspect stats
+                console.log("Character Data:", characterData);
+
+                // Check if stats exist and log them
+                if (!characterData.stats) {
+                    console.error("Stats are missing in the character data");
+                }
+
+                // Reorder stats based on statOrder array and numeric keys
+                const orderedStats = statOrder.reduce((acc, stat, index) => {
+                    if (characterData.stats && characterData.stats[index] !== undefined) {
+                        acc[stat] = characterData.stats[index];
+                    }
+                    return acc;
+                }, {});
+
+                // Debugging: Log orderedStats to check the reordering
+                console.log("Ordered Stats:", orderedStats);
+
+                // Check if orderedStats is not empty before rendering
+                if (Object.keys(orderedStats).length === 0) {
+                    console.error("Ordered stats are empty");
+                    document.getElementById("character-container").innerText = "Error: No stats found.";
+                    return;
+                }
+
+                // Dynamically insert character data into the HTML
+                document.getElementById("character-container").innerHTML = `
+                    <h2>${characterData.class} ${characterData.species}</h2>
+                    <p><strong>Background:</strong> ${characterData.background || 'Loading...'}</p>
+                    <p><strong>Character Background:</strong></p>
+                    <div>${characterData.character_background}</div>
+                    <h3>Stats:</h3>
+                    <ul>
+                        ${Object.entries(orderedStats).map(([key, value]) => `<li>${key}: ${value}</li>`).join('')}
+                    </ul>
+                `;
+
+                // Second fetch: background data
+                const backgroundResponse = await fetch("https://char-gen.onrender.com/generate_background", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        'species': characterData.species,
+                        'class': characterData.class,
+                        'stats': characterData.stats,
+                        'dead_farmers': characterData.dead_farmers
+                    })
+                });
+                const backgroundData = await backgroundResponse.json();
+                document.querySelector('#character-container div').innerHTML = backgroundData.character_background;
+
+            } catch (error) {
+                console.error("Error loading character:", error);
+                document.getElementById("character-container").innerText = "Error loading character data.";
+            }
+        }
 
         window.onload = loadCharacter;
+
     </script>
 </body>
