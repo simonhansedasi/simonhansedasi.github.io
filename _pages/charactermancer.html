@@ -21,7 +21,7 @@ author_profile: true
 
             try {
                 // First fetch: main character data without background
-                const response = await fetch("https://char-gen.onrender.com/generate_character", {
+                const response = await fetch("http://127.0.0.1:5000/generate_character", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' }
                 });
@@ -54,31 +54,32 @@ author_profile: true
                     return;
                 }
 
-                // Dynamically insert character data into the HTML
+                // Display character info
                 document.getElementById("character-container").innerHTML = `
                     <h2>${characterData.species} ${characterData.class}</h2>
-                    <p><strong>Background:</strong> ${characterData.background || 'Loading...'}</p>
-                    <p><strong>Character Background:</strong></p>
-                    <div>${characterData.character_background}</div>
-                    <h3>Stats:</h3>
-                    <ul>
-                        ${Object.entries(orderedStats).map(([key, value]) => `<li>${key}: ${value}</li>`).join('')}
-                    </ul>
+                    <h3>Stats:</h3> [${Object.entries(orderedStats).map(([key, value]) => `${key}: ${value}`).join(', ')}]
+                    <p><strong>Background:</strong> ${characterData.background}</p>
+                    <p><strong>Character Backstory:</strong></p>
+                    <div id="backstory-container">Loading...</div> <!-- Add loading message for backstory -->
                 `;
 
                 // Second fetch: background data
-                const backgroundResponse = await fetch("https://char-gen.onrender.com/generate_background", {
+                const backgroundResponse = await fetch("http://127.0.0.1:5000/generate_background", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         'species': characterData.species,
                         'class': characterData.class,
                         'stats': characterData.stats,
-                        'dead_farmers': characterData.dead_farmers
+                        'dead_farmers': characterData.dead_farmers,
+                        'background': characterData.background
                     })
                 });
+
                 const backgroundData = await backgroundResponse.json();
-                document.querySelector('#character-container div').innerHTML = backgroundData.character_background;
+
+                // Update backstory once it's fetched
+                document.querySelector('#backstory-container').innerHTML = backgroundData.character_background;
 
             } catch (error) {
                 console.error("Error loading character:", error);
