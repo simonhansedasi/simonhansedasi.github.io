@@ -6,11 +6,10 @@ author_profile: true
 ---
 
 {% include base_path %}
-
 <body>
-    <h1>Try playing a ...</h1>
+    <h1>Why don't you play a...</h1>
     <div id="character-container">
-        ...generating character...
+        Loading character data...
     </div>
 
     <script>
@@ -47,8 +46,8 @@ author_profile: true
               document.getElementById("character-container").innerText = "Error loading character data.";
           }
       }
-    </script>
 
-        // Load the character data on page load
+
         window.onload = loadCharacter;
+    </script>
 </body>
