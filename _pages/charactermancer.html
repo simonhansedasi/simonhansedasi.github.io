@@ -21,7 +21,7 @@ author_profile: true
 
             try {
                 // First fetch: main character data without background
-                const response = await fetch("http://127.0.0.1:5000/generate_character", {
+                const response = await fetch("https://char-gen.onrender.com/generate_character", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' }
                 });
@@ -64,7 +64,7 @@ author_profile: true
                 `;
 
                 // Second fetch: background data
-                const backgroundResponse = await fetch("http://127.0.0.1:5000/generate_background", {
+                const backgroundResponse = await fetch("https://char-gen.onrender.com/generate_background", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
