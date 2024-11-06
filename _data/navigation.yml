@@ -25,9 +25,13 @@ main:
 
   - title: "Art"
     url: /art/
+  - title: "Character-mancer"
+    url: /charactermancer/
 
   - title: "CV"
     url: /cv/
+
+
 #
   # - title: "Service"
   #   url: /service/
