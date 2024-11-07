@@ -40,7 +40,7 @@ async function loadCharacter() {
         const characterData = await fetchWithTimeout("https://char-gen.onrender.com/generate_character", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            timeout: 10000 // Set a timeout of 10 seconds for this request
+            timeout: 20000 // Set a timeout of 10 seconds for this request
         });
 
         // Log fetch end time for character data
@@ -99,7 +99,7 @@ async function loadCharacter() {
                 'dead_farmers': characterData.dead_farmers,
                 'background': characterData.background
             }),
-            timeout: 10000 // Set a timeout of 10 seconds for this request
+            timeout: 20000 // Set a timeout of 10 seconds for this request
         });
 
         // Log fetch end time for background data
@@ -118,4 +118,3 @@ async function loadCharacter() {
 
 // Add delay on window load in case the backend takes time to initialize
 window.onload = () => setTimeout(loadCharacter, 3000); // 3-second delay for testing
-
