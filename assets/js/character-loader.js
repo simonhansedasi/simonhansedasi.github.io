@@ -75,7 +75,7 @@ async function loadCharacter() {
 
         // Display character info
         document.getElementById("character-container").innerHTML = `
-            <h2>${characterData.species} ${characterData.class}</h2>
+            <h2>${characterData.alignment} ${characterData.species} ${characterData.class}</h2>
             <h3>Stats:</h3> [${Object.entries(orderedStats).map(([key, value]) => `${key}: ${value}`).join(', ')}]
             <p><strong>Background:</strong> ${characterData.background}</p>
             <p><strong>Character Backstory:</strong></p>
