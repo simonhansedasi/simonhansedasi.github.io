@@ -68,6 +68,14 @@ async function loadCharacter() {
             <p><strong>Character Backstory:</strong></p>
             <div id="backstory-container">Loading backstory...</div>
         `;
+        console.log("Payload for generate_background:", {
+            species: characterData.species,
+            class: characterData.class,
+            stats: characterData.stats,
+            dead_farmers: characterData.dead_farmers,
+            background: characterData.background,
+            alignment: characterData.alignment
+        });
 
         // Fetch background data including alignment
         const backgroundData = await fetchWithTimeout("https://char-gen.onrender.com/generate_background", {
