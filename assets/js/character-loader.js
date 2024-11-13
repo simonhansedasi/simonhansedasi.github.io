@@ -38,7 +38,7 @@ async function loadCharacter() {
         const characterData = await fetchWithTimeout("https://char-gen.onrender.com/generate_character", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            timeout: 20000
+            timeout: 10000
         });
 
         // Log and validate character data
@@ -89,7 +89,7 @@ async function loadCharacter() {
                 background: characterData.background,
                 alignment: characterData.alignment
             }),
-            timeout: 20000
+            timeout: 10000
         });
 
         console.log("Background data response:", backgroundData);
@@ -108,4 +108,4 @@ async function loadCharacter() {
 }
 
 // Delay the character generation to allow the backend to initialize
-window.onload = () => setTimeout(loadCharacter, 3000);
+window.onload = () => setTimeout(loadCharacter, 10000);
