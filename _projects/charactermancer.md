@@ -5,7 +5,7 @@ permalink: /projects/charactermancer
 author_profile: true
 redirect_from:
 ---
-<a href="{{ '/assets/demographics.pdf' }}" target="_blank">Download manuscript</a><br>
+<!-- <a href="{{ '/assets/demographics.pdf' }}" target="_blank">Download manuscript</a><br> -->
 Dungeons & Dragons and other role-playing games employ complex designs of how a player can
 interact with the game via their in-game personality, known as a player character or PC. Many choices
 are available to create a player character. Combinations of these choices lead to a multitude of possible
