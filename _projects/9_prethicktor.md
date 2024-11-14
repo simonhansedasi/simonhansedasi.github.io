@@ -5,6 +5,7 @@ permalink: /projects/prethicktor
 author_profile: true
 redirect_from:
 ---
+<a href="{{ '/assets/thickness.pdf' }}" target="_blank">Download manuscript</a><br>
 An accurate estimation of glacier volume is essential for effective water resource
 management and sea-level rise projections, however, traditional methods for assessing glacier
 thickness are costly and labor-intensive. This study presents a novel approach to estimating
@@ -21,5 +22,5 @@ without ice shelves and their buttressing effect on ice flow. This departure fro
 ods and estimates emphasizes the importance of improved observations of glacier thickness
 data, particularly in marine environments
 <p align="center">
-  <img src="/images/discrepancy_boxplot.png" width = "500" />
+  <img src="/images/discrepancy_boxplot.png" width = "700" />
 </p>

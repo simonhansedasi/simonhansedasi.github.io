@@ -7,7 +7,7 @@ redirect_from:
 ---
 Farinotti et al. 2019 produced thickness maps for glaciers contained in the Randolph Glacier Inventory, a.k.a. RGI. This notebook projects and plots the thickness map into a readable image.
 <p align="center">
-  <img src="/images/glac_map.png" width = "500" />
+  <img src="/images/glac_map.png" width = "700" />
 </p>
 
 ```python
