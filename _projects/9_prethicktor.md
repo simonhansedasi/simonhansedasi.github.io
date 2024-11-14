@@ -5,7 +5,7 @@ permalink: /projects/prethicktor
 author_profile: true
 redirect_from:
 ---
-<a href="{{ '/assets/thickness.pdf' }}" target="_blank">Download manuscript</a><br>
+<a href="{{ '/assets/thickness.pdf' }}" target="_blank">View manuscript</a><br>
 An accurate estimation of glacier volume is essential for effective water resource
 management and sea-level rise projections, however, traditional methods for assessing glacier
 thickness are costly and labor-intensive. This study presents a novel approach to estimating
