@@ -13,97 +13,132 @@ redirect_from:
 
 Summary
 ======
-I combine the inquisitive spirit of a scientist with the precise skill of a maintenance technician form a unique
-skillset capable of achieving anything. My background lies in geophysics, statistics, and data science, and I seek to
-tackle complex problems facing our communities. Experienced in fast paced environments and prioritizing for
-deadlines, I am seeking a challenge for which to apply my skills and help others.
+A skilled data scientist and geophysicist with a strong foundation in analytics, data processing, and machine
+learning. Expertise includes signal processing, neural networks, and statistical analysis, with practical experience
+in glacier thickness prediction and photonic sensing. Relevant coursework and research encompass geophysical
+continuum mechanics, seismology, and Distributed Acoustic Sensing (DAS), providing a solid base for work in
+underwater acoustics. Demonstrated ability to perform in fast-paced environments, with strengths in strategic
+problem-solving, technical integration, and advancing innovation in complex systems.
+
+Proficiencies
+======
+* **Technical**: Machine learning & neural networks, data pre-processing, data analysis & visualization, statistical analysis
+* **Scripting**: Python (GeoPy, SciPy, pandas, numpy, matplotlib, tensorﬂow); R (car, dplyr, ggplot2, plotly); Jupyter; Git
+* **Soft Skills**: Strategic problem solving, communication, task prioritization, collaboration, research & development
+
 
 Education
 ======
-* M.S. Earth and Space Sciences, University of Washington, 2024
-  <!-- * Thesis: A Data Driven Estimate of Glacier Thicknesses Reveals the Influence of Ice Shelves and Other Ocean Interactions -->
-  * Automated construction of glacier database combining remotely-sensed glacier surface attributes with a much smaller database of thickness measurements using geographic coordinates contained in both datasets.
-  * Established thresholds of reliability of matched data to be used in regression analysis. Time differences between datasets may make some thickness measurements unreliable for a measured surface area.
-  * Employed neural networks and leave-one-out cross-validation to perform regression analysis with mean thickness as the target variable and remotely-sensed surface attributes as independent variables.
-  * Contributed to existing knowledge by highlighting impacts of glacier termination dynamics on distributions of glacier ice thickness, a fact frequently overlooked in glacier modeling.
-
-
-* B.S. Earth and Space Sciences, University of Washington, 2019
-  * Minor in Mathematical Physics and Estonian
+* **M.S. Earth and Space Sciences, University of Washington, 2024**
+  * Automated the integration of remote sensing and glacier thickness data for a comprehensive glacier database.
+  * Applied neural networks with leave-one-out cross-validation for glacier thickness predictions, contributing to the
+understanding of glacier-ocean interactions.
+  * Established data reliability thresholds to improve regression analysis precision, showcasing the importance of dynamic glacier features in thickness distributions.
+* **B.S. Earth and Space Sciences, University of Washington, 2019**
+  * Minor: Mathematical Physics, Estonian
   * Dean’s list for five quarters, and annual dean’s list 2014-2015.
   * Course work in continuum mechanics, geophysics, electromagnetism, thermodynamics, linear algebra, and differential equations.
 
 
 Specialized Coursework
 ======
-* Photonic Sensing
+* **Photonic Sensing**
   * Studied fundamentals of optical physics in application of distributed seismic sensing using optical fiber networks.
   * Wrote code to automate filtering of raw data collected by Distributed Acoustic Sensing equipment connected to dark commercial fiber under Seattle, WA. Filtered data was then used to analyze city traffic patterns.
-* Statistical Inferences in Ecology
+* **Statistical Inferences in Ecology**
   * Studied experimental design and a multitude of tests and methods to determine statistical significance in data.
-* Geoscience Communication
+* **Geoscience Communication**
   * Developed writing skills to convey complex ideas in different styles and applications.
   * Collaborated with classmates on a capstone research project and presentation discussing the future of energy.
-* Geophysical Continuum Mechanics
+* **Geophysical Continuum Mechanics**
   * Applied constitutive laws of stress and strain to the context of geological materials and the Earth’s lithosphere.
-* Seismology
+* **Seismology**
   * Examined stress and strain, the wave equation, travel times, amplitude and phase, reflection seismology, surface waves, and source theory, including moment tensors, radiation patterns, far-field wave shapes, source spectra, stress drop, and magnitude.
 
 
-
+Teaching experience
+======
+* **2024: University of Washington**
+  * ESS 101 – Introduction to Geology
+    * Introduction to the processes, materials and structures that shape Earth. Emphasizes the dynamic nature of the earth’s tectonic system and its relationship to physical features, volcanism, earthquakes, minerals and rocks and geologic structures.
+* **2023: University of Washington**
+  * ESS 211 – Earth Processes
+    * Introductory structural geology and geomorphology. Deformation of soil, sediment, and rock. Erosional and
+  depositional processes and landforms. Structural, geomorphic, and climatic interactions in major tectonic regimes.
+  Use of geologic maps and cross sections.
+* **2023: University of Washington**
+  * ESS 102 – Space and Space Travel
+    * Explores the sun, solar storms, observations from space and from Earth; Earth’s space environment, radiation belts
+and hazards, plasma storms and auroras, rockets and propulsion, human exploration eﬀorts, societal impact,
+planetary systems and resources, and project highlighting space and its exploration.
 
 
 Work experience
 ======
-* 2019 - 2021: University of Washington
+* **2019 - 2021: University of Washington**
   * Research Assistant in ESS IsoLab
   * Supervisor: Dr. Alexis Licht
-    * Powdered, weighed, and de-carbonated paleosol rock samples. Measured organic and inorganic carbon content for analysis and paleoclimate reconstruction.
-    * Contributed data for published article: "Proto-monsoon rainfall and greening in Central Asia due to extreme early Eocene warmth"
-* 2017 - 2022: University of Washington
+    * Processed and analyzed over 150 paleosol samples, employing advanced laboratory techniques such as
+spectrometry and de-carbonation to generate high-quality data for paleoclimate research.
+    * Utilized data processing and analytical methods to contribute to a peer-reviewed publication on early Eocene
+paleoclimate.
+    * Streamlined laboratory workﬂows, ensuring data consistency and improving analysis eﬃciency through precise
+sample preparation.
+* **2017 - 2022: University of Washington**
   * Administrative Assistant
-    * Created, administered, and collected invoice payments for lab work by UW Earth & Space Sciences IsoLab, Geochemistry Lab, Microprobe, and World Wide Lightning Location Network.
-    * Managed department financial records: Responsible for assembling, completing, and reconciling paperwork for transactions; maintained in-office records and interacted with archival records as needed for audit.
-    * Developed tool for managing online budget reconciliation status and email notification automation.
-* 2008 - 2014: U.S. Air Force
+    * Managed invoicing and ﬁnancial records for Earth & Space Sciences labs, ensuring timely and accurate payment
+processing for lab services.
+    * Maintained and reconciled ﬁnancial data for multiple labs, applying meticulous attention to detail and
+problem-solving skills to ensure the integrity of records during audits.
+    * Developed a tool to track budget reconciliation statuses, improving eﬃciency and communication with stakeholders.
+* **2008 - 2014: U.S. Air Force**
   * AWACS Communication & Navigation Maintenance Technician and Isochronal Inspection
-    * Maintained communication and navigation equipment on board fleet of Airborne Warning And Control System aircraft in Elmendorf AFB, AK and Tinker AFB, OK.
+    * Managed the maintenance and inspection of complex communication and navigation systems on AWACS aircraft,
+utilizing data-driven analysis to ensure operational reliability.
     * Managed secret cryptographic programs responsible for safety of assets and flightcrew during engagement operations
-    * Executed annual inspection of all communication and navigation equipment on board fleet of AWACS aircraft to ensure long-term operability.
-    * Attended Airman Leadership School for promotion to Staff Sergeant, and achieved craftsman maintenance skill level, capable of clearing aircraft as safe to fly.
-    * Trained, mentored, and supervised junior airmen, directly responsible for on the job training and professional development.
-* 2006 - 2008: Nibley Park Golf Course
+    * Diagnosed and resolved system malfunctions by analyzing performance data, enhancing equipment readiness and
+mission success.
+    * Led cryptographic data management and security eﬀorts, ensuring the protection of sensitive information during
+critical operations.
+    * Trained junior airmen in system diagnostics, data handling, and technical maintenance, fostering a high-performance
+team environment.
+* **2006 - 2008: Nibley Park Golf Course**
   * Driving range and fairway ranger
-    * Responsible for collecting, washing, and maintaining supply of driving range golf balls. Also responsible for cleanliness and availability of golf carts and push carts.
+    * Responsible for collecting, washing, and maintaining supply of driving range golf balls. Also responsible for
+cleanliness and availability of golf carts and push carts.
     * Fast paced environment, strategic problem solving, prioritization of tasks, customer service.
 
 
-Proficiencies
+Projects
 ======
-* Languages
-  * English (native), Estonian (conversational)
-* Linux
-  * rsync, terminal, SSH, vim
-* Scripting
-  * Python (GeoPy, SciPy, pandas, numpy, matplotlib, tensorflow); R (car, dplyr, ggplot2, plotly); Jupyter; Git
-* Soft Skills
-  * Customer Service, Task Prioritization, Verbal and Written Communication
-
-
-
+* **Glacier Mapping & Estimation**
+  * Statistical inference of glacier mean thickness using remotely sensed surface features as training features for
+regression analysis. Discovered and quantiﬁed signiﬁcance of buttressing eﬀect of ﬂoating ice-shelves and other
+marine glacier termination dynamics.
+* **LS-TM Rainfall Prediction**
+  * Working with 40+ years of rainfall data in Seattle, WA, this project aims to predict rainfall using contributing factors
+such as temperature, pressure, cloud availability, and wind-speeds.
+* **Simulation of a Creative Environment**
+  * Simulated a population within the creative environment of Dungeons & Dragons. Analyzed game mechanics for
+probability of generating speciﬁc combinations leading to character archetypes. Delivered insights into statistical
+biases within the game, as well as explored potential options for balancing and expansion.
 
 
 
 Service
 ======
-* UW Graduate and Professional Student Senator
-  * Legislated in the UW Graduate and Professional Student Senate representing the rights and interests of over 15,000 graduate and professional students at the University of Washington. Procured funding for two departmental retreats and a picnic table to socialize on the department patio.
-* UAW 4121 Academic Student Employee Union
-  * Recruited student employees in departments across campus to join the union ahead of contract bargaining, and helped rally student employees to strike when bargaining failed to reach a fair contract.
-* Whale Scout
-  * Volunteered to plant bushes and shrubs on an abandoned golf course. This project is meant to restore natural waterways that support local salmon populations and ultimately orcas in the Puget Sound.
-* Airmen Against Drunk Driving
-  * Received calls and offered rides for hot-line for airmen to call for a free ride home to prevent drunk driving.
+* **UW Graduate and Professional Student Senator**
+  * Legislated in the UW Graduate and Professional Student Senate representing the rights and interests of over 15,000
+graduate and professional students at the University of Washington. Procured funding for two departmental retreats
+and a picnic table to socialize on the department patio.
+* **UAW 4121 Academic Student Employee Union**
+  * Recruited student employees in departments across campus to join the union ahead of contract bargaining, and
+helped rally student employees to strike when bargaining failed to reach a fair contract.
+* **Whale Scout**
+  * Volunteered to plant bushes and shrubs on an abandoned golf course. This project is meant to restore natural
+waterways that support local salmon populations and ultimately orcas in the Puget Sound.
+* **Airmen Against Drunk Driving**
+  * Received calls and oﬀered rides for hot-line for airmen to call for a free ride home to prevent drunk driving.
 
 
 
