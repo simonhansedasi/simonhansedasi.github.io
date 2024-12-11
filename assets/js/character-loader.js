@@ -35,10 +35,10 @@ async function loadCharacter() {
         console.log("Starting character generation...");
 
         // Fetch main character data without background
-        const characterData = await fetchWithTimeout("https://char-gen.onrender.com/generate_character", {
+        const characterData = await fetchWithTimeout("https://6f78-73-83-144-18.ngrok-free.app/generate_character", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            timeout: 10000
+            timeout: 100000
         });
 
         // Log and validate character data
@@ -78,7 +78,7 @@ async function loadCharacter() {
         });
 
         // Fetch background data including alignment
-        const backgroundData = await fetchWithTimeout("https://char-gen.onrender.com/generate_background", {
+        const backgroundData = await fetchWithTimeout("https://6f78-73-83-144-18.ngrok-free.app/generate_background", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -89,7 +89,7 @@ async function loadCharacter() {
                 background: characterData.background,
                 alignment: characterData.alignment
             }),
-            timeout: 10000
+            timeout: 100000
         });
 
         console.log("Background data response:", backgroundData);
