@@ -35,10 +35,10 @@ async function loadCharacter() {
         console.log("Starting character generation...");
 
         // Fetch main character data without background
-        const characterData = await fetchWithTimeout("https://59dd-73-83-144-18.ngrok-free.app/generate_character", {
+        const characterData = await fetchWithTimeout("https://a3d6-73-83-144-18.ngrok-free.app/generate_character", {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            timeout: 100000
+            headers: { 'Content-Type': 'application/json' }
+            // timeout: 1000
         });
 
         // Log and validate character data
@@ -78,7 +78,7 @@ async function loadCharacter() {
         });
 
         // Fetch background data including alignment
-        const backgroundData = await fetchWithTimeout("https://59dd-73-83-144-18.ngrok-free.app/generate_background", {
+        const backgroundData = await fetchWithTimeout("https://a3d6-73-83-144-18.ngrok-free.app/generate_background", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
