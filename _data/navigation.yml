@@ -26,7 +26,13 @@ main:
   - title: "Art"
     url: /art/
   - title: "D&D Character-mancer"
-    url: /charactermancer/
+    url: https://simonhansedasi.github.io/char_gen/
+    
+  - title: "Commuting"
+    url: https://simonhansedasi.github.io/commuting/
+    
+  - title: "NYT Games Ranking"
+    url: https://simonhansedasi.github.io/game_ranking/
 
   - title: "CV"
     url: /cv/
