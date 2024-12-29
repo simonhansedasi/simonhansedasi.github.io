@@ -35,7 +35,7 @@ async function loadCharacter() {
         console.log("Starting character generation...");
 
         // Fetch main character data without background
-        const characterData = await fetchWithTimeout("https://ed870abc5856.ngrok.app/generate_character", {
+        const characterData = await fetchWithTimeout("https://872092e651ff.ngrok.app/generate_character", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
             // timeout: 1000
@@ -78,7 +78,7 @@ async function loadCharacter() {
         });
 
         // Fetch background data including alignment
-        const backgroundData = await fetchWithTimeout("https://ed870abc5856.ngrok.app/generate_background", {
+        const backgroundData = await fetchWithTimeout("https://872092e651ff.ngrok.app/generate_background", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -108,4 +108,4 @@ async function loadCharacter() {
 }
 
 // Delay the character generation to allow the backend to initialize
-window.onload = () => setTimeout(loadCharacter, 10000);
+window.onload = () => setTimeout(loadCharacter, 1000);
