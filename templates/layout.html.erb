@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= page_title %> | <%= site["title"] %></title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= site["analytics_id"] %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '<%= site["analytics_id"] %>');
+  </script>
+  <%- if extra_head -%>
+  <%= extra_head %>
+  <%- end -%>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a href="/" class="site-title"><%= site["title"] %></a>
+      <nav class="site-nav">
+        <%- site["nav"].each do |item| -%>
+        <a href="<%= item["url"] %>" class="nav-link<%= current_url == item["url"] ? " active" : "" %>"><%= item["title"] %></a>
+        <%- end -%>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+
+    <aside class="sidebar">
+      <div class="author-profile">
+        <img src="<%= site["author"]["avatar"] %>" alt="<%= site["author"]["name"] %>" class="author-avatar">
+        <h3 class="author-name"><%= site["author"]["name"] %></h3>
+        <p class="author-bio"><%= site["author"]["bio"] %></p>
+        <p class="author-location">
+          <i class="fas fa-map-marker-alt"></i>
+          <%= site["author"]["location"] %>
+        </p>
+        <div class="author-links">
+          <a href="mailto:<%= site["author"]["email"] %>" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/<%= site["author"]["github"] %>" title="GitHub" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <h1 class="page-title"><%= page_title %></h1>
+      <div class="page-body">
+        <%= content %>
+      </div>
+    </main>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; <%= Time.now.year %> Simon Hans Edasi</p>
+  </footer>
+
+</body>
+</html>

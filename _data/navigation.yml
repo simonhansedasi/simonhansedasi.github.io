@@ -8,12 +8,15 @@ main:
 #
   - title: "Projects"
     url: "/projects/"
-
+    
+    
+  - title: "Art"
+    url: /art/
 
 
 #
-  # - title: "Portfolio"
-  #   url: /portfolio/
+  - title: "Portfolio"
+    url: http://simonhansedasi.github.io/portfolio/
 #
   # - title: "Teaching"
   #   url: /haikus2/
@@ -23,20 +26,19 @@ main:
   #   url: /haikus/
 
 
-  - title: "Art"
-    url: /art/
+
     
-  - title: "D&D Character-mancer"
-    url: https://simonhansedasi.github.io/char_gen/
+#   - title: "D&D Character-mancer"
+#     url: https://simonhansedasi.github.io/char_gen/
     
-  - title: "D&D Loot Generator"
-    url: https://simonhansedasi.github.io/loot/
+#   - title: "D&D Loot Generator"
+#     url: https://simonhansedasi.github.io/loot/
     
-  - title: "Commuting"
-    url: https://simonhansedasi.github.io/commuting/
+#   - title: "Commuting"
+#     url: https://simonhansedasi.github.io/commuting/
     
-  - title: "NYT Games Ranking"
-    url: https://simonhansedasi.github.io/game_ranking/
+#   - title: "NYT Games Ranking"
+#     url: https://simonhansedasi.github.io/game_ranking/
     
 
 
