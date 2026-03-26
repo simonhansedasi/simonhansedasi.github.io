@@ -9,31 +9,30 @@ redirect_from:
 
 {% include base_path %}
 
-<a href="{{ '/assets/edasi_CV.pdf' }}" target="_blank">Printer Friendly Version</a>
+<!-- <a href="{{ '/assets/edasi_CV.pdf' }}" target="_blank">Printer Friendly Version</a> -->
 
 Summary
 ======
-A skilled data scientist and geophysicist with a strong foundation in analytics, data processing, and machine
-learning. Expertise includes signal processing, neural networks, and statistical analysis, with practical experience
-in glacier thickness prediction and photonic sensing. Relevant coursework and research encompass geophysical
-continuum mechanics, seismology, and Distributed Acoustic Sensing (DAS), providing a solid base for work in
-underwater acoustics. Demonstrated ability to perform in fast-paced environments, with strengths in strategic
-problem-solving, technical integration, and advancing innovation in complex systems.
+I work as a data specialist contractor. I come in, make sense of messy data, build the infrastructure to keep it clean, and then help organizations use it to see forward.
+
+The engagement usually runs in three phases: clean and understand the data, build dashboards and workflows that make good data the default, and then predictive modeling once the foundation holds. I'm domain-agnostic — the subject just has to be worth understanding.
+
+My background spans published glaciological research (*Journal of Glaciology*, 2026), agent-based simulation of complex systems, production Flask applications, and six years maintaining mission-critical avionics in the U.S. Air Force. I bring the same standard to all of it: understand the system, measure what matters, build something that works when you're not watching it.
 
 Proficiencies
 ======
-* **Technical**: Machine learning & neural networks, data pre-processing, data analysis & visualization, statistical analysis
-* **Scripting**: Python (GeoPy, SciPy, pandas, numpy, matplotlib, tensorﬂow); R (car, dplyr, ggplot2, plotly); Jupyter; Git
-* **Soft Skills**: Strategic problem solving, communication, task prioritization, collaboration, research & development
+* **Data**: Statistical modeling, machine learning & neural networks, agent-based simulation, time-series analysis, data pipeline design, uncertainty quantification
+* **Engineering**: Python (pandas, numpy, scipy, statsmodels, scikit-learn, tensorflow, matplotlib, seaborn, Flask, SQLAlchemy, Click); SQL; R (ggplot2, dplyr); HTML/CSS/JS; Git
+* **Infrastructure**: SQLite, REST APIs, Raspberry Pi deployment, Tailscale, systemd services
+* **Domain exposure**: Geophysics, viticulture, sales operations, CRM, distributed acoustic sensing
 
 
 Education
 ======
 * **M.S. Earth and Space Sciences, University of Washington, 2024**
-  * Automated the integration of remote sensing and glacier thickness data for a comprehensive glacier database.
-  * Applied neural networks with leave-one-out cross-validation for glacier thickness predictions, contributing to the
-understanding of glacier-ocean interactions.
-  * Established data reliability thresholds to improve regression analysis precision, showcasing the importance of dynamic glacier features in thickness distributions.
+  * Published research quantifying how ice–ocean interactions shape global glacier volume. Tidewater and lake-terminating glaciers are systematically thicker than land-terminating glaciers — an effect accounting for ~20% of non-ice-sheet global glacier volume. *Journal of Glaciology*, 2026.
+  * Built a neural network pipeline to estimate thickness for 216,501 glaciers globally using leave-one-out cross-validation across co-registered GlaThiDa and RGI datasets.
+  * Developed coregistration methodology to match independently maintained global datasets across different measurement epochs, with rigorous uncertainty propagation through to global volume estimates.
 * **B.S. Earth and Space Sciences, University of Washington, 2019**
   * Minor: Mathematical Physics, Estonian
   * Dean’s list for five quarters, and annual dean’s list 2014-2015.
@@ -109,21 +108,6 @@ cleanliness and availability of golf carts and push carts.
     * Fast paced environment, strategic problem solving, prioritization of tasks, customer service.
 
 
-Projects
-======
-* **Glacier Mapping & Estimation**
-  * Statistical inference of glacier mean thickness using remotely sensed surface features as training features for
-regression analysis. Discovered and quantiﬁed signiﬁcance of buttressing eﬀect of ﬂoating ice-shelves and other
-marine glacier termination dynamics.
-* **LS-TM Rainfall Prediction**
-  * Working with 40+ years of rainfall data in Seattle, WA, this project aims to predict rainfall using contributing factors
-such as temperature, pressure, cloud availability, and wind-speeds.
-* **Simulation of a Creative Environment**
-  * Simulated a population within the creative environment of Dungeons & Dragons. Analyzed game mechanics for
-probability of generating speciﬁc combinations leading to character archetypes. Delivered insights into statistical
-biases within the game, as well as explored potential options for balancing and expansion.
-
-
 
 Service
 ======
@@ -143,24 +127,8 @@ waterways that support local salmon populations and ultimately orcas in the Puge
 
 
 
-<!-- Publications
+Publications
 ======
   <ul>{% for post in site.publications %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-
-Talks
-======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-
-Teaching
-======
-  <ul>{% for post in site.teaching %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-
-Service and leadership
-======
-* Currently signed in to 43 different slack teams -->

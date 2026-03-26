@@ -1,26 +1,17 @@
 ---
 layout: archive
-title: "Glacier Thickness Predictor"
+title: "Tidewater and lake-terminating glaciers are systematically thicker"
 permalink: /projects/prethicktor
 author_profile: true
 redirect_from:
 ---
-<a href="{{ '/assets/thickness.pdf' }}" target="_blank">View manuscript</a><br>
-An accurate estimation of glacier volume is essential for effective water resource
-management and sea-level rise projections, however, traditional methods for assessing glacier
-thickness are costly and labor-intensive. This study presents a novel approach to estimating
-glacier thickness utilizing neural networks trained on thickness data from the Glacier Thickness
-Database (GlaThiDa) and glacier attributes, such as area or slope, from the Randolph Glacier
-Inventory (RGI). A regression analysis is conducted on a subset of GlaThiDa data, which is then
-used to infer thicknesses for glaciers in the RGI dataset. Challenges in matching GlaThiDa
-thickness data to RGI attributes are addressed, employing distance and area thresholds to en-
-sure the matched GlaThiDa thickness is representative of RGI attributes. Furthermore, this
-study provides a comprehensive comparison with existing global estimates. Notably, this study
-has lower estimates of volume for shelf and marine-terminating glaciers due to a sparsity of
-available training data. These findings suggest the neural network effectively models a world
-without ice shelves and their buttressing effect on ice flow. This departure from previous meth-
-ods and estimates emphasizes the importance of improved observations of glacier thickness
-data, particularly in marine environments
+<a href="https://doi.org/10.1017/jog.2026.10123" target="_blank">Published in <i>Journal of Glaciology</i>, 2026</a><br><br>
+
+Tidewater and lake-terminating glaciers are systematically thicker than glaciers ending on land — and that difference accounts for roughly 20% of non-ice-sheet global glacier volume.
+
+We arrived at this by training a shallow neural network on glacier-averaged thickness measurements from GlaThiDa and surface attributes from the Randolph Glacier Inventory (216,501 glaciers globally), then comparing models trained with and without water-terminating glaciers in the training set. The gap between those models is the imprint of ice-ocean interaction on global ice volume. It is consistent with a simple mechanical explanation: water pressure at the ice front permits thicker termini than are stable in air, setting a different boundary condition for equilibrium glacier geometry.
+
+The pipeline handles the messy reality of co-registering two independently maintained global datasets across different measurement epochs, using distance and area thresholds to filter unreliable matches. Leave-one-out cross-validation across 273 co-registered glaciers produces per-glacier uncertainty estimates that propagate through to a global volume uncertainty budget.
 <p align="center">
   <img src="/images/discrepancy_boxplot.png" width = "700" />
 </p>

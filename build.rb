@@ -23,9 +23,10 @@ SITE = {
   "analytics_id" => "G-7B3V0WDVWN",
   "author"       => {
     "name"     => "Simon Hans Edasi",
-    "bio"      => "Data scientist and geophysicist. UW graduate. Seattle, WA.",
+    "bio"      => "Fixing problems you didn't know you had",
     "email"    => "simonhansedasi@gmail.com",
     "github"   => "simonhansedasi",
+    "linkedin" => "simon-hans-edasi",
     "location" => "Seattle, WA",
     "avatar"   => "/images/profile.jpg"
   },
@@ -144,7 +145,8 @@ projects = Dir.glob(File.join(SRC_ROOT, "_projects/*.md")).sort.reverse.map do |
   fm, body = parse_front_matter(raw)
   next unless fm["permalink"]
 
-  { "title" => fm["title"], "url" => fm["permalink"], "body" => strip_liquid(body) }
+  stripped = strip_liquid(body)
+  { "title" => fm["title"], "url" => fm["permalink"], "body" => stripped, "html" => md_to_html(stripped) }
 end.compact
 
 puts "==> Collecting haikus"
@@ -188,9 +190,14 @@ puts "==> Rendering main pages"
 
 def projects_list_html(projects)
   items = projects.map do |p|
-    "<li><a href=\"#{p['url']}\">#{p['title']}</a></li>"
-  end.join("\n    ")
-  "<ul class=\"archive-list\">\n    #{items}\n  </ul>"
+    <<~HTML
+      <details class="project-entry">
+        <summary class="project-title">#{p['title']}</summary>
+        <div class="project-body">#{p['html']}</div>
+      </details>
+    HTML
+  end.join
+  "<div class=\"project-list\">\n#{items}</div>"
 end
 
 def haikus_list_html(haikus)

@@ -10,4 +10,6 @@ Monopoly has always been a fun way to kill time. First as a child playing star w
   <img src="/images/pyopoly.png" width = "700" />
 </p>
 
-I define the board and properties as different classes, and the board is populated with properties with defined attributes. A numpy random number generator is used to roll dice and internal logic moves the player's piece. Rent is automatically deducted and if the property is unowned there is an option to buy it. Trading is not yet implemented, nor is game end. It basically advances around the board paying rent back and forth with no end in sight, much like our current housing market.
+The board and properties are defined as classes, with NumPy for dice. The full mechanics are implemented: buying properties, building houses and hotels, paying rent, drawing Chance and Community Chest cards, going to jail. CPU opponents make automated buy and build decisions. The terminal output is colorized. It ends when someone goes bankrupt — unlike our current housing market, which does not.
+
+The code is on <a href="https://github.com/simonhansedasi/pyopoly" target="_blank">GitHub</a>.

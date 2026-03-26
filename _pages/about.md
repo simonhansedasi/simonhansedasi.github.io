@@ -7,6 +7,10 @@ redirect_from:
   - /about/
   - /about.html
 ---
-My name is Simon Hans Edasi and I am driven in pursuit of morally uncompromising challenge. I am a recent graduate from University of Washington with a background in machine learning, data analysis, statistical analysis, and geophysics. In years past I served honorably as a U.S. Air Force aircraft maintenance craftsman as well as an accounts receivable clerk.
+I'm a scientist. I study behaviors under constraint — and my subjects are limitless.
 
-Click on the links above to see what I have been working on lately.
+My toolkit is data: statistical modeling, machine learning, simulation. The domain is whatever life puts in front of me. That has meant glacier dynamics (my work on tidewater glacier thickness is published in the *Journal of Glaciology*, 2026), sales organization behavior (agent-based simulation of rep archetypes, sentiment dynamics, and pipeline mechanics), and right now, toddlerhood. The subject may seem unhinged. The work is rigorous.
+
+I hold an M.S. in Earth and Space Sciences from the University of Washington, where I developed a neural network pipeline to estimate glacier thickness globally and quantify how ice-ocean interactions shape glacier volume at a planetary scale. Before that I spent six years in the U.S. Air Force maintaining communication and navigation systems on AWACS aircraft — which taught me discipline, a high standard for correctness, and to always think about what the dumbest possible thing could go wrong, then prevent something dumber.
+
+I think in terms of data and I try to understand what matters to me — in passing or long term — by building something that captures it.
