@@ -364,6 +364,13 @@ tr:nth-child(even) td {
   padding: 0.25em 0 1.5em 1.4em;
 }
 
+.project-body a {
+  color: var(--accent);
+}
+.project-body a:hover {
+  color: var(--accent-hover);
+}
+
 /* =============================================================================
    Art page
    ============================================================================= */

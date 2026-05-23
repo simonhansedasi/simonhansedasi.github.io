@@ -8,12 +8,10 @@ redirect_from:
 
 I became a full-time caregiver and started spending my days with a toddler.
 
-After enough time you start to read them. You notice patterns — which conditions produce a meltdown, which snack at which time of day is the real variable, how sleep debt compounds. I decided to put it to paper. Or rather, to put it to data.
+After enough time you start to read them. You notice patterns. I decided to do something useful with that rather than just observe it.
 
-Dada Science is a collection of analytical studies on toddler behavior conducted with the same rigor I would bring to any other system under observation. The subject is absurd. The methods are not. Two-way ANOVA to isolate whether sugar content or time of day drives tantrum duration. STL decomposition on a 141-day nap time series to separate the effects of declining daylight from DST. An ARIMAX model treating berry season as a natural experiment in nap compliance. All data is synthetic — generated with seeded NumPy for reproducibility — but the questions are real.
+The library book recommender came first. The problem was concrete: we were burning library holds on books Heiki would inspect for four seconds and set face-down. The scraper pulls the Sno-Isle catalog nightly via the BiblioCommons API — roughly 165,000 titles across genres, audiences, and formats. A Flask web UI runs on a Raspberry Pi in the house; three users (Heiki, Simon, Madeleine) share the catalog and maintain independent taste profiles. The engine is TF-IDF plus cosine similarity: it builds a preference fingerprint from books you've rated or engaged with, weighted across four signals — star ratings, rereads, reads, and false starts — and ranks unread books against that fingerprint. Holds go through the BiblioCommons API directly from the interface.
 
-The project has since grown beyond the studies. There is now a Flask app running on a Raspberry Pi in my house, accessible over Tailscale, that logs sleep, food, activities, meltdowns, mood, and potty events in real time. I launched it today. No findings yet.
+The week planner came next. It's a CLI tool for building and managing a weekly schedule: activities in append-only per-week JSON files, Rich terminal display, interactive editing via questionary. The Google Calendar integration supports push (plan to GCal, idempotent re-push) and pull (external events into the local file). Activities carry an optional location field that renders as a Maps link in the terminal and populates GCal's native location on push. Multi-account pull normalizes timezones across calendars.
 
-There is also a library book recommender that scrapes the Sno-Isle catalog, learns from ratings, and surfaces books via TF-IDF cosine similarity — because once you have the infrastructure, you keep building.
-
-The code is on <a href="https://github.com/simonhansedasi/dada_science" target="_blank">GitHub</a>.
+Both are in daily use. The code is on <a href="https://github.com/simonhansedasi/dada_science" target="_blank">GitHub</a>.

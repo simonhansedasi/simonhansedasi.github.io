@@ -35,7 +35,7 @@
       <div class="author-profile">
         <img src="/images/profile.jpg" alt="Simon Hans Edasi" class="author-avatar">
         <h3 class="author-name">Simon Hans Edasi</h3>
-        <p class="author-bio">Data scientist and geophysicist. UW graduate. Seattle, WA.</p>
+        <p class="author-bio">Fixing problems you didn't know you had</p>
         <p class="author-location">
           <i class="fas fa-map-marker-alt"></i>
           Seattle, WA
@@ -43,6 +43,7 @@
         <div class="author-links">
           <a href="mailto:simonhansedasi@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
           <a href="https://github.com/simonhansedasi" title="GitHub" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/simon-hans-edasi" title="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
         </div>
       </div>
     </aside>
@@ -50,13 +51,98 @@
     <main class="page-content">
       <h1 class="page-title">Projects</h1>
       <div class="page-body">
-        <ul class="archive-list">
-    <li><a href="/projects/charactermancer">Character-mancer</a></li>
-    <li><a href="/projects/prethicktor">Glacier Thickness Predictor</a></li>
-    <li><a href="/projects/glac_map">Glacier Mapping</a></li>
-    <li><a href="/projects/ringing">Seismic Ringing</a></li>
-    <li><a href="/projects/pyopoly">Pyopoly</a></li>
-  </ul>
+        <div class="project-list">
+<details class="project-entry">
+  <summary class="project-title">Dada Science</summary>
+  <div class="project-body"><p>I became a full-time caregiver and started spending my days with a toddler.</p>
+
+<p>After enough time you start to read them. You notice patterns — which conditions produce a meltdown, which snack at which time of day is the real variable, how sleep debt compounds. I decided to put it to paper. Or rather, to put it to data.</p>
+
+<p>Dada Science is a collection of analytical studies on toddler behavior conducted with the same rigor I would bring to any other system under observation. The subject is absurd. The methods are not. Two-way ANOVA to isolate whether sugar content or time of day drives tantrum duration. STL decomposition on a 141-day nap time series to separate the effects of declining daylight from DST. An ARIMAX model treating berry season as a natural experiment in nap compliance. All data is synthetic — generated with seeded NumPy for reproducibility — but the questions are real.</p>
+
+<p>The project has since grown beyond the studies. There is now a Flask app running on a Raspberry Pi in my house, accessible over Tailscale, that logs sleep, food, activities, meltdowns, mood, and potty events in real time. I launched it today. No findings yet.</p>
+
+<p>There is also a library book recommender that scrapes the Sno-Isle catalog, learns from ratings, and surfaces books via TF-IDF cosine similarity — because once you have the infrastructure, you keep building.</p>
+
+<p>The code is on <a href="https://github.com/simonhansedasi/dada_science" target="_blank">GitHub</a>.</p>
+</div>
+</details>
+<details class="project-entry">
+  <summary class="project-title">Character-mancer</summary>
+  <div class="project-body"><p>I was bored in grad school. I started a D&amp;D group with a bunch of people who had never played before, which meant I was constantly building characters from scratch. At some point I decided to automate it — and once you have an automated character funnel, you have a simulation, and once you have a simulation you have data.</p>
+
+<p>So I ran 10,000 characters through the 2014 Player’s Handbook rules and wrote up what came out.</p>
+
+<p>The simulator rolls attributes using the 4d6-drop-lowest method with two constraints: at least one score must be 16 or higher, and the average must be at least 12. Species, class, background, and alignment are then selected by weighted matching against the rolled array. Chi-squared residuals and correlation matrices reveal where the mechanics produce non-obvious outcomes.</p>
+
+<p>A few things stood out. Strength and Dexterity are moderately negatively correlated — not because the game intends this, but because sequential generation and species bonus mechanics create it as an artifact. Intelligence is systematically underutilized as a primary class attribute. Gnomes and Tieflings are structurally disadvantaged: their species bonuses don’t align well with any physical class, leaving them clustered in a narrow band of options. Bard is the most mechanically unique class in the PHB; Fighter is the least. The adventuring population skews heavily Human and Elf, which turns out to be a direct consequence of their attribute flexibility rather than player preference for those species.</p>
+
+<p>The image below shows chi-squared standardized residuals for species-class combinations — red means the pairing occurs more than the marginal distributions would predict, blue means less.</p>
+
+<p align="center">
+  <img src="/images/chisq-resid.png" width="700" />
+</p>
+
+<p>The code is on <a href="https://github.com/simonhansedasi/char_gen" target="_blank">GitHub</a>.</p>
+</div>
+</details>
+<details class="project-entry">
+  <summary class="project-title">GrapeExpectations</summary>
+  <div class="project-body"><p>I found myself at a wine tasting at Turnbull Winery in Napa. The server was describing how the position of a vine within the vineyard — its row, its elevation, its exposure — produces measurable variance in the grape and ultimately in the wine. I was fascinated. The question underneath it was familiar: how much does location explain outcome, and can you measure it precisely?</p>
+
+<p>So I went home and started drawing polygons on Google Earth.</p>
+
+<p>The project began by computing field geometry from measured acreage and row spacing — row counts, vine counts, wire lengths for trellis installation. Practically useful numbers, but that was the warm-up. The more interesting work was in the sensing data: using ridge regression to model how canopy-level variables relate to grape quality metrics, asking whether the variance the sommelier was describing could be captured quantitatively.</p>
+
+<p>I reached out to Washington State University to see if the approach was worth pursuing at scale. They thought it was. We are now exploring deployment of Distributed Temperature Sensing (DTS) fiber optic cables to measure canopy temperature across vineyard rows — the same photonic sensing technology I worked with at the UW Photonic Sensing Lab, now applied to viticulture.</p>
+
+<p>The code is on <a href="https://github.com/simonhansedasi/GrapeExpectations" target="_blank">GitHub</a>.</p>
+</div>
+</details>
+<details class="project-entry">
+  <summary class="project-title">Tidewater and lake-terminating glaciers are systematically thicker</summary>
+  <div class="project-body"><p><a href="https://doi.org/10.1017/jog.2026.10123" target="_blank">Published in <i>Journal of Glaciology</i>, 2026</a><br /><br /></p>
+
+<p>Tidewater and lake-terminating glaciers are systematically thicker than glaciers ending on land — and that difference accounts for roughly 20% of non-ice-sheet global glacier volume.</p>
+
+<p>We arrived at this by training a shallow neural network on glacier-averaged thickness measurements from GlaThiDa and surface attributes from the Randolph Glacier Inventory (216,501 glaciers globally), then comparing models trained with and without water-terminating glaciers in the training set. The gap between those models is the imprint of ice-ocean interaction on global ice volume. It is consistent with a simple mechanical explanation: water pressure at the ice front permits thicker termini than are stable in air, setting a different boundary condition for equilibrium glacier geometry.</p>
+
+<p>The pipeline handles the messy reality of co-registering two independently maintained global datasets across different measurement epochs, using distance and area thresholds to filter unreliable matches. Leave-one-out cross-validation across 273 co-registered glaciers produces per-glacier uncertainty estimates that propagate through to a global volume uncertainty budget.</p>
+<p align="center">
+  <img src="/images/discrepancy_boxplot.png" width="700" />
+</p>
+</div>
+</details>
+<details class="project-entry">
+  <summary class="project-title">Seismic Ringing</summary>
+  <div class="project-body"><p>This notebook is devoted to detecting and displaying seismic anomalies detected by the University of Washington Photonic Sensing Lab. A fiber optic cable connects UW Seattle to UW Bothell and runs the length of the city of Seattle, allowing our lab to detect ground moiton. While searching for signals generated by trains moving through underground tunnels in order to audit their schedule, we detected several strange high amplitude, low frequency events between the evening of November 10 thorugh the afternoon of November 14, 2022 under Red Square, the main plaza of the University of Washington Seattle campus.</p>
+<p align="center">
+  <img src="/images/ring.png" width="700" />
+</p>
+
+<p>It is currently unknown what is causing these signals as they span several channels of approximately 6 meter spacing per channel and do not always have similar features. An early hypothesis suggested these could be percussive signals from a nearby marching band or similar performance, however the events occur throughout the day and are non-dispersive. A percussive signal should be detected farther along the cable and be dispersive, however these detected signals are confined to only a few channels.</p>
+
+<p>These signals are also accompanied by long “ring-down” time after detecting extremely large amplitudes as if the cable were kicked or picked up. There are also periods of extended shaking of several minutes as if a jackhammer is being operated right next to the cable. A likely candidate for these signals could easily be construction or maintenance in the parking garage below Red Square.</p>
+
+<p>Two suggested next steps for this project would be to: 1: Perform a tap test in or under Red Square to precisly locate the cable location. 2: Review facilities maintenance records for the parking garage in case of heavy machinery is being used.</p>
+
+<p>These anomalies were found by scanning repeating 10-minute windows of DAS data across four days. When large amplitudes were detected, the data was passed through two bandpass filters (0.01–0.1 Hz and 0.1–1 Hz) and plotted as a space-time heatmap. Selecting a single channel then revealed the ring-down in the time series — signals persisting for over a minute after the initial event.</p>
+
+</div>
+</details>
+<details class="project-entry">
+  <summary class="project-title">Pyopoly</summary>
+  <div class="project-body"><p>Monopoly has always been a fun way to kill time. First as a child playing star wars monopoly with my family, then later I made a board and dice from paper to play with fellow recruits in basic training. While on paternity leave I began writing a python based command line interface version of monopoly.</p>
+<p align="center">
+  <img src="/images/pyopoly.png" width="700" />
+</p>
+
+<p>The board and properties are defined as classes, with NumPy for dice. The full mechanics are implemented: buying properties, building houses and hotels, paying rent, drawing Chance and Community Chest cards, going to jail. CPU opponents make automated buy and build decisions. The terminal output is colorized. It ends when someone goes bankrupt — unlike our current housing market, which does not.</p>
+
+<p>The code is on <a href="https://github.com/simonhansedasi/pyopoly" target="_blank">GitHub</a>.</p>
+</div>
+</details>
+</div>
       </div>
     </main>
 
