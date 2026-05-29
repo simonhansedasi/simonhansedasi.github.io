@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simon-Hans Edasi — CV</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+  <script src="https://unpkg.com/layout-base@2.0.1/layout-base.js"></script>
+  <script src="https://unpkg.com/cose-base@2.2.0/cose-base.js"></script>
+  <script src="https://unpkg.com/cytoscape-fcose@2.2.0/cytoscape-fcose.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d1a;
+      color: #ccc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    header {
+      padding: 0.75rem 1.25rem 0.5rem;
+      border-bottom: 1px solid #1e1e35;
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      flex-shrink: 0;
+    }
+    header h1 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #e8e8f0;
+      letter-spacing: 0.01em;
+    }
+    header .subtitle {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    header a {
+      color: #555;
+      text-decoration: none;
+    }
+    header a:hover { color: #999; }
+
+    #toolbar {
+      padding: 0.5rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+      border-bottom: 1px solid #1a1a2e;
+    }
+    .cvf-btn {
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-family: inherit;
+      opacity: 0.42;
+      transition: opacity 0.15s;
+    }
+    .cvf-btn.active { opacity: 1; }
+    .cvf-btn[data-type="all"] {
+      background: #333;
+      color: #ccc;
+      border-color: #444;
+      opacity: 1;
+    }
+
+    #main {
+      flex: 1;
+      display: flex;
+      min-height: 0;
+      gap: 0;
+    }
+
+    #cv-graph {
+      flex: 1;
+      min-width: 0;
+    }
+
+    #cv-panel {
+      width: 320px;
+      flex-shrink: 0;
+      border-left: 1px solid #1e1e35;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #cv-panel-inner {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.1rem 1.1rem 1rem;
+    }
+    #cv-panel-hint {
+      color: #444;
+      font-style: italic;
+      font-size: 0.82rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    #cv-panel-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #e8e8f0;
+      line-height: 1.35;
+      margin-bottom: 0.7rem;
+    }
+    #cv-panel-body {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: #bbb;
+      white-space: pre-wrap;
+    }
+
+    #legend {
+      padding: 0.5rem 1.25rem;
+      border-top: 1px solid #1a1a2e;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.1rem;
+      font-size: 0.73rem;
+      color: #666;
+      flex-shrink: 0;
+    }
+    .leg { display: flex; align-items: center; gap: 0.35rem; }
+    .leg-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .leg-diamond {
+      width: 9px; height: 9px;
+      background: #7c3aed;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Simon-Hans Edasi</h1>
+  <span class="subtitle"><a href="/">simonhansedasi.github.io</a> &mdash; Curriculum Vitae &mdash; click any node to explore</span>
+</header>
+
+<div id="toolbar">
+  <button class="cvf-btn" data-type="all">All</button>
+  <button class="cvf-btn active" data-type="education"   style="background:#4e9af1;color:#fff">Education</button>
+  <button class="cvf-btn active" data-type="work"        style="background:#22c55e;color:#fff">Work Experience</button>
+  <button class="cvf-btn active" data-type="research"    style="background:#c084fc;color:#fff">Research / Projects</button>
+  <button class="cvf-btn active" data-type="publication" style="background:#f59e0b;color:#111">Publications</button>
+  <button class="cvf-btn active" data-type="teaching"    style="background:#14b8a6;color:#fff">Teaching</button>
+  <button class="cvf-btn active" data-type="service"     style="background:#f472b6;color:#fff">Service</button>
+</div>
+
+<div id="main">
+  <div id="cv-graph"></div>
+  <div id="cv-panel">
+    <div id="cv-panel-inner">
+      <p id="cv-panel-hint">Click any node to see details.</p>
+      <div id="cv-panel-detail" style="display:none">
+        <p id="cv-panel-title"></p>
+        <p id="cv-panel-body"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="legend"></div>
+
+<script>
+(function () {
+
+var ENTRY_TYPES = {
+  education:   { color: '#4e9af1', label: 'Education' },
+  work:        { color: '#22c55e', label: 'Work Experience' },
+  research:    { color: '#c084fc', label: 'Research / Projects' },
+  publication: { color: '#f59e0b', label: 'Publications' },
+  teaching:    { color: '#14b8a6', label: 'Teaching' },
+  service:     { color: '#f472b6', label: 'Service' },
+};
+
+var NODES = [
+
+  // ── Section hubs ─────────────────────────────────────────────────────────
+  { id: 'sec_education',    type: 'section', sectionType: 'education',   color: '#4e9af1',
+    label: 'Education', title: 'Education',
+    body: 'Degrees, certificates, and formal training.' },
+  { id: 'sec_work',         type: 'section', sectionType: 'work',        color: '#22c55e',
+    label: 'Work\nExperience', title: 'Work Experience',
+    body: 'Paid positions and contract roles.' },
+  { id: 'sec_research',     type: 'section', sectionType: 'research',    color: '#c084fc',
+    label: 'Research &\nProjects', title: 'Research & Projects',
+    body: 'Independent and collaborative research projects, published and ongoing.' },
+  { id: 'sec_publications', type: 'section', sectionType: 'publication', color: '#f59e0b',
+    label: 'Publications', title: 'Publications',
+    body: 'Peer-reviewed papers, conference abstracts, and submitted manuscripts.' },
+  { id: 'sec_teaching',     type: 'section', sectionType: 'teaching',    color: '#14b8a6',
+    label: 'Teaching', title: 'Teaching',
+    body: 'Teaching assistant roles at the University of Washington.' },
+  { id: 'sec_service',      type: 'section', sectionType: 'service',     color: '#f472b6',
+    label: 'Service', title: 'Service',
+    body: 'Volunteer, union, and institutional service.' },
+  { id: 'sec_skills',       type: 'section', sectionType: null,          color: '#7c3aed',
+    label: 'Skills', title: 'Skills & Methods',
+    body: 'Core technical competencies demonstrated across research, work, and projects.' },
+
+  // ── Skill cluster nodes ───────────────────────────────────────────────────
+  { id: 'sk_ml',    type: 'skill', color: '#a78bfa', label: 'Machine\nLearning',
+    title: 'Machine Learning & AI',
+    body: 'TensorFlow/Keras, scikit-learn (RF, ExtraTrees, GBM, KNN, ElasticNetCV), XGBoost, SHAP attribution, LOO/LOYO cross-validation, uncertainty quantification, agent-based simulation, Anthropic & OpenAI SDKs.' },
+  { id: 'sk_geo',   type: 'skill', color: '#818cf8', label: 'Geospatial\nAnalysis',
+    title: 'Geospatial & Remote Sensing',
+    body: 'Google Earth Engine, geopandas, rasterio, GDAL, Shapely, rasterstats, pyproj, xarray, osmnx, pandana, Folium. Satellite data: Sentinel-2, USGS 1m DEM, ERA5-Land, Daymet V4, gSSURGO, SoilGrids. DAS and DTS fiber-optic sensing.' },
+  { id: 'sk_stats', type: 'skill', color: '#6366f1', label: 'Statistical\nModeling',
+    title: 'Statistical Modeling & Analysis',
+    body: 'OLS regression, ANOVA, PCA, K-means, Monte Carlo, Mantel test, chi-squared, Cramer\'s V, bootstrap stability, permutation importance, joint probability / information content, TF-IDF, cosine similarity, pandas, NumPy, SciPy, statsmodels.' },
+  { id: 'sk_web',   type: 'skill', color: '#4f46e5', label: 'Web &\nInfrastructure',
+    title: 'Web Development & Infrastructure',
+    body: 'Python, Flask, SQLAlchemy, SQLite, Jinja2, vanilla JS, HTML/CSS, Cytoscape.js, REST API design. DigitalOcean, Raspberry Pi, systemd, nginx, gunicorn, Tailscale VPN, GitHub Pages.' },
+  { id: 'sk_ops',   type: 'skill', color: '#3730a3', label: 'Operations\n& Systems',
+    title: 'Operations & Systems',
+    body: 'Microsoft Great Plains ERP, SmartConnect, VBA (Excel automation), avionics systems maintenance, cryptographic security management, ISO documentation, financial reconciliation, DSO tracking, accounts receivable.' },
+
+  // ── Education entries ─────────────────────────────────────────────────────
+  { id: 'bs_uw', type: 'education', color: '#4e9af1', label: 'B.S. Earth &\nSpace Sciences',
+    title: 'B.S. Earth & Space Sciences — University of Washington, 2019',
+    body: 'GPA: 3.4. Minors: Mathematical Physics, Estonian. Dean\'s list five quarters; annual dean\'s list 2014-2015.\n\nCoursework: continuum mechanics, geophysics, electromagnetism, thermodynamics, linear algebra, differential equations.' },
+
+  { id: 'ms_uw', type: 'education', color: '#4e9af1', label: 'M.S. Geophysical\nData Science',
+    title: 'M.S. Geophysical Data Science — University of Washington, 2024',
+    body: 'GPA: 3.7. Published first-author research in the Journal of Glaciology (2026). Built neural network pipeline for global glacier thickness estimation across 216,501 glaciers.\n\nCoursework: seismology, distributed acoustic sensing, quantitative environmental sciences, geophysical continuum mechanics.' },
+
+  { id: 'ds_cert', type: 'education', color: '#4e9af1', label: 'Data Science\nCertificate',
+    title: 'Data Science Certificate — University of Washington, 2025',
+    body: 'UW Professional & Continuing Education. CRISP-DM methodology, EDA, statistical modeling, and ML pipeline design. Completed alongside contract work at RANDY\'s.' },
+
+  // ── Work experience entries ───────────────────────────────────────────────
+  { id: 'usaf', type: 'work', color: '#22c55e', label: 'U.S. Air Force\n2008–2014',
+    title: 'Communication & Navigation Maintenance Technician / NCO — U.S. Air Force, 2008–2014',
+    body: 'Maintained AWACS communication and navigation systems — complex, interdependent avionics architectures where component failure cascades through the system. Six years of diagnosing root causes in interconnected systems under conditions where getting it wrong had real consequences.\n\nExecuted all maintenance from Air Force Technical Orders — the military equivalent of engineering specifications. Interpreted requirements, planned execution, documented outcomes to zero-tolerance standards. Accurate recording was a safety and legal obligation, not a best practice.\n\nPerformed pre-flight, thru-flight, and post-flight inspections; documented all discrepancies and corrective actions in maintenance management systems. Used precision measurement tools and calibrated test equipment to verify system tolerances and conformance after installation.\n\nManaged cryptographic security program: controlled access to encrypted communication systems, maintained audit-ready key management documentation under DoD compliance standards.\n\nPromoted to NCO; trained junior airmen in system diagnostics, data handling, and technical maintenance. Led mandatory unit training for mixed-rank, diverse audiences — developed the skill of translating technical and sensitive content across knowledge levels.\n\nOperational deployments built the instinct that systems must work reliably when no one is watching.' },
+
+  { id: 'uw_admin', type: 'work', color: '#22c55e', label: 'UW Admin Aide\n2017–2022',
+    title: 'Administrative Aide (Finance & Operations) — University of Washington, 2017–2022',
+    body: 'Managed billing and financial tracking for a public research unit: generated and reconciled invoices for ESS lab services, tracked payments across multiple departmental accounts, and resolved discrepancies with both internal and external payors.\n\nCoordinated financial information across faculty PIs, departmental administration, and institutional systems. Maintained records to the accuracy standards required for grant compliance and external audit — not best practice, but obligation.\n\nSupported reporting cycles connecting lab-level financial data to institutional budgets. Built a custom tool to track budget reconciliation statuses across labs, improving efficiency and communication with stakeholders.\n\nFive years of continuous operation across multiple PIs and grant cycles built fluency in how public-sector research organizations use administrative data for compliance, accountability, and planning.' },
+
+  { id: 'uw_isolab', type: 'work', color: '#22c55e', label: 'Research Asst.\nIsoLab 2019–21',
+    title: 'Research Assistant — UW ESS IsoLab, 2019–2021',
+    body: 'Supervisor: Dr. Alexis Licht. Processed and analyzed 150+ paleosol samples using spectrometry and de-carbonation for paleoclimate research. Contributed to peer-reviewed publication on early Eocene paleoclimate.\n\nStreamlined laboratory workflows to improve sample throughput and data consistency.' },
+
+  { id: 'randys', type: 'work', color: '#22c55e', label: "AR Specialist\nRANDY's 2025",
+    title: "Accounts Receivable Specialist (Contract) — RANDY's World-Wide, Mar–Aug 2025",
+    body: 'Served as functional architect for AR automation: diagnosed a manual bulk cash application bottleneck by tracing the end-to-end reconciliation workflow, then designed and led the SmartConnect + Microsoft Great Plains ERP integration that eliminated it. Led user acceptance testing; diagnosed data flow failures and coordinated between business operations and the ERP implementation specialist.\n\nBuilt Python pipelines to process and validate transaction data: defined anomaly criteria (short pays, duplicate payments, unapplied cash, remittance mismatches) and calibrated detection thresholds against raw data to distinguish genuine discrepancies from expected variation across hundreds to thousands of weekly transactions.\n\nParsed semi-structured customer remittance emails and PDFs into structured reconciliation datasets, with judgment rules for escalating ambiguous records to human review.\n\nBuilt a VBA-driven DSO aging tracker with custom bucketing logic; replaced ad hoc spreadsheets with a repeatable reporting process that gave management a consistent view of collection risk by account tier each week.\n\nDigitized records management workflows; wrote shell scripts to automate file organization and enforce auditable, repeatable data handling across the AR team.' },
+
+  // ── Research / project entries ────────────────────────────────────────────
+  { id: 'das', type: 'research', color: '#c084fc', label: 'DAS — Fiber\nOptic Sensing',
+    title: 'Distributed Acoustic Sensing — UW / LINK Light Rail',
+    body: 'Photonic sensing field project as part of UW graduate coursework. Tap-tested buried fiber-optic cable on the UW campus to interrogate seismic signals from the LINK Light Rail tunnel running beneath.\n\nIdentified acoustic anomalies by spatial location, frequency band, and temporal pattern using signal processing techniques. Characterized subsurface heterogeneity from surface measurements without drilling.\n\nApplicable to infrastructure monitoring, contamination pathway detection, and subsurface characterization. Methods directly informed the DTS vineyard pilot designed for GrapeExpectations.' },
+
+  { id: 'glacier', type: 'research', color: '#c084fc', label: 'glacier_prethicktor',
+    title: 'glacier_prethicktor — Global Glacier Thickness Estimation (Journal of Glaciology, 2026)',
+    body: 'Network architecture: 6->6->2->1 shallow neural network trained on surface attributes. 273 leave-one-out cross-validation models against GlaThiDa 3.1.0 and RGI 6.0 — one model per glacier, each predicting the held-out glacier using all others as training data.\n\n3-component uncertainty quantification: measurement error, LOO variance, residual. Global ice volume: 136 +/- 2 x 10^3 km^3; residual -3 +/- 28 m vs. Farinotti et al. consensus benchmark.\n\nKey finding: water-terminating glaciers hold ~6 cm of sea-level-rise potential, accounting for ~20% of non-ice-sheet global glacier volume — a terminus-type effect not previously quantified at this scale.\n\nPresented at AGU Fall Meeting 2022 (C52C-0373). Data archived on Zenodo. Stack: Python 3.8, TensorFlow/Keras 2.12.' },
+
+  { id: 'glacier2', type: 'research', color: '#c084fc', label: 'glacier_prethicktor_2',
+    title: 'glacier_prethicktor_2 — Flotation Constraint Violation (Nature GeoSci, in prep)',
+    body: 'Demonstrates that existing global glacier thickness estimates systematically violate a first-order flotation constraint — a physical bound requiring that ice thickness not exceed the flotation depth at marine margins.\n\nThe violation is not random noise: it is correlated with terminus type, suggesting that existing consensus models inherit the same terminus-type bias identified in glacier_prethicktor.\n\nCorrection experiment recovers scaling exponent alpha=0.45 in the physically valid subset. Manuscript near-complete; target journal: Nature Geoscience.\n\nBuilds on glacier_prethicktor but takes the inverse approach: instead of estimating thickness from data, it audits the physical plausibility of existing model-based estimates.' },
+
+  { id: 'grape', type: 'research', color: '#c084fc', label: 'GrapeExpectations',
+    title: 'GrapeExpectations — Precision Viticulture Remote Sensing Pipeline',
+    body: '5-source geospatial fusion at meter resolution across a Washington State vineyard: Sentinel-2 (9 annual vintages), USGS 1m DEM, ERA5-Land, Daymet V4, gSSURGO. Custom flat-top hexagonal grid (circumradius r = sqrt(2A / (3*sqrt(3)))): 3,598 cells at ~1,000 m^2 each; sliver removal via buffer(0) + min-area threshold; 32,382 training rows.\n\n100+ features per cell: topographic zonal stats (slope, aspect cos/sin, curvature, relief), 6 vegetation indices (NDVI/EVI/NDWI/SAVI/RENDVI/MCARI2), soil chemistry, daily climate.\n\nStacked ensemble (RF + ExtraTrees + GBM + XGBoost + KNN -> ElasticNetCV meta-learner): test R^2 = 0.9323, RMSE = 0.0229 NDVI. LOYO temporal validation (10 vintages): mean R^2 = 0.353 +/- 0.114. SHAP attribution: terrain features = 75.5% of predictive importance. Spatial clustering via gradient boosting leaf embeddings + PCA + K-means -> 3 interpretable management zones.\n\nFrost risk raster: composite microclimate score from slope drainage, elevation deviation, and NDVI vigor. DTS fiber-optic vineyard pilot designed with Washington State University for 1m spatial, sub-minute temporal canopy temperature profiling.' },
+
+  { id: 'kush', type: 'research', color: '#c084fc', label: 'KushCountry / UTF',
+    title: 'KushCountry — Unsupervised Terrain Fingerprinting (Emerald Triangle, CA)',
+    body: 'Developed Unsupervised Terrain Fingerprinting (UTF): 8,900 hexagonal cells at 2km spacing across Humboldt, Mendocino, and Trinity counties (UTM Zone 10N). 23-feature vector per cell: 8 topographic + 6 climate (ERA5/Daymet: tmean, VPD, frost-free days, GDD, precip, dry-season fraction) + 6 soil (SoilGrids ISRIC WCS: pH, SOC, CEC, sand/silt/clay) + 3 EO (Sentinel-2 NDVI median, NDVI std, canopy heterogeneity).\n\nPipeline: StandardScaler -> PCA (PC1 = coast-interior gradient) -> K-means K=7 -> archetype discovery. Cannabis archetype (Cluster 0): GDD 1395, VPD 1568 Pa*day, elevation 527m, pH 5.84; 2.9% of landscape area.\n\nEnforcement validation: scraped 510 RWQCB NOV PDFs, geocoded APNs via Humboldt parcel REST API, matched 91 parcels to hex grid. Chi^2(6) = 36.6, p = 2.1x10^-6, Cramer\'s V = 0.26; Cluster 0 = 9.9% of enforcement parcels vs. 2.9% of landscape (lift = 3.41). Bootstrap ARI = 0.974 across 50 subsamples.\n\nSub-clustering (K=6): 714 prime terrain cells (pH 6.02, slope 19.0 degrees). RF regression within Cluster 0: NDVI std R^2 = 0.650; slope dominates permutation importance (0.59).' },
+
+  { id: 'javascript', type: 'research', color: '#c084fc', label: 'JavaScript —\nCoffee Climate',
+    title: 'JavaScript — Thermal Niche Modeling for Hawaiian Coffee',
+    body: 'Labeled 674 GPS-registered coffee farm polygons (Hawaii Agricultural Land Use 2020) across 385 hexagonal cells on the Big Island. Quantified how +1 C warming reorganizes spatial suitability for Ka\'u and Kona coffee regions by 2035-2045 under SSP2-4.5 and SSP5-8.5 scenarios.\n\nPer-region PCA + K-means: Kona K=3 (PC1=24% variance), Ka\'u K=2 (PC1=40% variance). Thermal optima: Kona 18.4 C (sigma=1.4 C), Ka\'u 19.9 C (sigma=2.2 C).\n\nEnvironmental analog finder: nearest-neighbor search in standardized feature space to identify climatically similar expansion zones under warming. Key finding: Kona suitable zone contracts upslope; Ka\'u expands.\n\nData: USGS 1m DEM, Sentinel-2 NDVI, ERA5-Land, Daymet V4, gSSURGO, NEX-GDDP-CMIP6 projections. Stack: Python, Google Earth Engine, rasterio, geopandas, scikit-learn, XGBoost, xarray.' },
+
+  { id: 'snotrac', type: 'research', color: '#c084fc', label: 'snotrac —\nTransit Equity',
+    title: 'snotrac — Transit Accessibility & Equity Analysis (Snohomish + King County, WA)',
+    body: 'Frequency-weighted transit accessibility model combining GTFS network data (Community Transit, auto-downloaded), ACS 5-year demographic layers, and OSM road network via osmnx.\n\nVulnerability Index: 4 ACS indicators (elderly %, unemployment, zero-vehicle HH, poverty), normalized and averaged [0,1]. Pandana gravity model: beta=4.0 decay at 0.25 mi (elderly/disabled walking tolerance), 1.5 mi search radius.\n\nGap Score = vuln x (1 - log_accessibility) with log normalization for right-skewed distribution. Equity distance: signed perpendicular distance from diagonal (high need, low service = underserved quadrant). Outputs: interactive Folium county maps, equity scatter plots, 2D priority rankings.\n\nPolicy brief delivered to regional agencies. Live at snotrac.uniquefier.us.' },
+
+  { id: 'sf_majick', type: 'research', color: '#c084fc', label: 'sf_majick —\nSales Simulator',
+    title: 'sf_majick — Agent-Based Sales Org Simulator',
+    body: '4 rep archetypes (Closer, Nurturer, Grinder, Scattered); 9 micro-actions; 5 macro-transitions. Sentiment engine with passive decay, momentum, and friction. Decision engine: 3-step lookahead with personality-weighted expected value.\n\nModels human biases explicitly: recency bias, sunk-cost bias, burnout, and distraction. RequirementConfig AND/OR gate architecture directly implements CIPT H2 — constraint bottleneck theory predicting which behavioral gates drive system-level outcomes.\n\n185-parameter OrgCalibrator designed to fit simulation outputs to observed CRM metrics (win rate, cycle time, stage distribution, revenue) via Salesforce OAuth/SOQL integration. OLS regression with ExperimentRunner isolates action efficacy coefficients controlling for stage, outcome, and archetype. Whitepaper written (v0.2, May 2026).' },
+
+  { id: 'stat_unique', type: 'research', color: '#c084fc', label: 'statistical\nuniqueness',
+    title: 'statistical_uniqueness — Demographic Re-identification Risk Engine',
+    body: 'Joint-probability engine computing how many US residents share a complete demographic profile — the same math used in enterprise privacy engineering to assess re-identification risk in "anonymized" datasets.\n\n15+ attributes across demographics, family structure, life events, and language. 3 conditional lookup tables from ACS 5-year 2022 PUMS microdata (income | education, occupation | education, tenure | marital status) decorrelate strongly correlated attributes rather than assume independence. Race-stratified education matrix from Census C15002A-I tables (8 race x 7 education groups).\n\nInformation-theoretic framing: attributes ranked by bits of uniqueness. Latvian speaker: ~13.7 bits alone (1 in ~7,000 nationally) — consistently outranks occupation and education for discriminating power. State sweep across all 52 US states via Census API with disk-cached lookups.\n\nFlask web app with live 400ms-debounced recalculation, state dropdown for geographic scoping, and per-attribute probability table with data source citations. Live at uniquefier.us.' },
+
+  { id: 'rippleforge', type: 'research', color: '#c084fc', label: 'RippleForge\n(Live, Paid)',
+    title: 'RippleForge — Causality Engine for Narrative (rippleforge.gg)',
+    body: 'Production SaaS for tabletop RPG game masters at rippleforge.gg. Multi-tenant Flask + SQLite backend; gunicorn + nginx + Let\'s Encrypt on DigitalOcean.\n\nWorld graph: Cytoscape.js force-directed visualization of NPCs, factions, locations, and causal relationships — GMs can see how every actor in the world connects. AI-powered consequence generation via Anthropic API; streaming responses with full audit trail via ai_glue.\n\nEmail invite system, character assignment, NPC-party relationship tracking, per-session event ledger. Two-step deploy pipeline: local pytest suite -> rsync -> DigitalOcean. Live paying users.' },
+
+  { id: 'ai_glue', type: 'research', color: '#c084fc', label: 'ai_glue —\nLLM Governance',
+    title: 'ai_glue — LLM Observability & Governance Layer (v0.4.0)',
+    body: 'Drop-in audit and governance wrapper for Anthropic and OpenAI APIs. Streaming proxy with transparent token counting at end-of-stream; zero code changes required for proxy mode.\n\nLive governance rule reloading (no restart): model allowlists, cost caps, rate limits, PII detection (regex-based), per-team API key routing via synthetic prefix. Multi-instance parent-child architecture: 4 instances across 2 hosts (Pi dev :5010, Pi prod :5012, DigitalOcean prod :5010, aggregator) with aggregate dashboard using 5-minute background cache refresh.\n\nJSONL fine-tuning export (fine-tuning compatible); 27-test mock suite (zero API keys required). Stack: Python, Flask, SQLite, Anthropic SDK, OpenAI SDK, Chart.js.' },
+
+  // ── Publication entries ───────────────────────────────────────────────────
+  { id: 'jog2026', type: 'publication', color: '#f59e0b', label: 'J. of Glaciology\n2026',
+    title: 'Edasi, SH., Lipovsky, B.P. — Journal of Glaciology 72, e28 (2026)',
+    body: '"Tidewater and lake-terminating glaciers are systematically thicker than land-terminating glaciers."\n\nDOI: 10.1017/jog.2026.10123. First-author.\n\nWater-terminating glaciers hold ~20% of non-ice-sheet global volume (~6 cm SLR potential). Global ice volume: 136 +/- 2 x 10^3 km^3.' },
+
+{ id: 'agu2022', type: 'publication', color: '#f59e0b', label: 'AGU Fall\nMeeting 2022',
+    title: 'AGU Fall Meeting 2022 — Abstract C52C-0373',
+    body: '"Can We Estimate Global Ice Volume Using Only Data, i.e., Without Using Physical Models?"\n\nEdasi, SH., Lipovsky, B.P. Preliminary glacier thickness neural network results.' },
+
+  // ── Teaching entries ──────────────────────────────────────────────────────
+  { id: 'ta_ess211', type: 'teaching', color: '#14b8a6', label: 'TA — ESS 211\nEarth Processes',
+    title: 'Teaching Assistant — ESS 211: Earth Processes, UW, 2023',
+    body: 'Introductory structural geology and geomorphology. Deformation of soil, sediment, and rock; erosional and depositional processes; geologic maps and cross sections.' },
+
+  { id: 'ta_ess102', type: 'teaching', color: '#14b8a6', label: 'TA — ESS 102\nSpace & Travel',
+    title: 'Teaching Assistant — ESS 102: Space and Space Travel, UW, 2023',
+    body: 'Solar physics, space environment, radiation belts, auroras, rockets and propulsion, human exploration, planetary systems, and societal impact.' },
+
+  { id: 'ta_ess101', type: 'teaching', color: '#14b8a6', label: 'TA — ESS 101\nIntro Geology',
+    title: 'Teaching Assistant — ESS 101: Introduction to Geology, UW, 2024',
+    body: 'Tectonic systems, volcanism, earthquakes, minerals, rocks, and geologic structures. Managed lab sections and designed assessments.' },
+
+  // ── Service entries ───────────────────────────────────────────────────────
+  { id: 'gpss', type: 'service', color: '#f472b6', label: 'UW Graduate\nSenate',
+    title: 'UW Graduate and Professional Student Senator, 2023–2024',
+    body: 'Legislated in the GPSS representing 15,000+ graduate and professional students at UW. Procured funding for two departmental retreats and ESS patio seating.' },
+
+  { id: 'uaw', type: 'service', color: '#f472b6', label: 'UAW 4121\nOrganizer',
+    title: 'UAW 4121 Academic Student Employee Union Organizer, 2023',
+    body: 'Recruited student employees across campus departments ahead of contract bargaining. Helped rally members to strike when bargaining failed to reach a fair contract.' },
+
+  { id: 'whale_scout', type: 'service', color: '#f472b6', label: 'Whale Scout',
+    title: 'Whale Scout Volunteer',
+    body: 'Planted native shrubs on an abandoned golf course to restore waterways supporting local salmon populations and Puget Sound orcas.' },
+
+  { id: 'aadd', type: 'service', color: '#f472b6', label: 'Airmen Against\nDrunk Driving',
+    title: 'Airmen Against Drunk Driving (AADD)',
+    body: 'On-call volunteer driver providing free rides for service members to prevent drunk driving incidents on base.' },
+];
+
+var EDGES = [
+
+  // ── Entries → section hubs ────────────────────────────────────────────────
+  { id: 'es_bs',     source: 'bs_uw',       target: 'sec_education',    etype: 'structural' },
+  { id: 'es_ms',     source: 'ms_uw',       target: 'sec_education',    etype: 'structural' },
+  { id: 'es_cert',   source: 'ds_cert',     target: 'sec_education',    etype: 'structural' },
+
+  { id: 'ew_usaf',   source: 'usaf',        target: 'sec_work',         etype: 'structural' },
+  { id: 'ew_admin',  source: 'uw_admin',    target: 'sec_work',         etype: 'structural' },
+  { id: 'ew_iso',    source: 'uw_isolab',   target: 'sec_work',         etype: 'structural' },
+  { id: 'ew_rand',   source: 'randys',      target: 'sec_work',         etype: 'structural' },
+
+  { id: 'er_das',    source: 'das',         target: 'sec_research',     etype: 'structural' },
+  { id: 'er_glac',   source: 'glacier',     target: 'sec_research',     etype: 'structural' },
+  { id: 'er_grape',  source: 'grape',       target: 'sec_research',     etype: 'structural' },
+  { id: 'er_kush',   source: 'kush',        target: 'sec_research',     etype: 'structural' },
+  { id: 'er_js',     source: 'javascript',  target: 'sec_research',     etype: 'structural' },
+  { id: 'er_sno',    source: 'snotrac',     target: 'sec_research',     etype: 'structural' },
+  { id: 'er_sfm',    source: 'sf_majick',   target: 'sec_research',     etype: 'structural' },
+  { id: 'er_rf',     source: 'rippleforge', target: 'sec_research',     etype: 'structural' },
+  { id: 'er_ag',     source: 'ai_glue',     target: 'sec_research',     etype: 'structural' },
+  { id: 'er_g2',     source: 'glacier2',    target: 'sec_research',     etype: 'structural' },
+  { id: 'er_su',     source: 'stat_unique', target: 'sec_research',     etype: 'structural' },
+
+  { id: 'ep_jog',    source: 'jog2026',     target: 'sec_publications', etype: 'structural' },
+  { id: 'ep_agu',    source: 'agu2022',     target: 'sec_publications', etype: 'structural' },
+
+  { id: 'et_211',    source: 'ta_ess211',   target: 'sec_teaching',     etype: 'structural' },
+  { id: 'et_102',    source: 'ta_ess102',   target: 'sec_teaching',     etype: 'structural' },
+  { id: 'et_101',    source: 'ta_ess101',   target: 'sec_teaching',     etype: 'structural' },
+
+  { id: 'ev_gpss',   source: 'gpss',        target: 'sec_service',      etype: 'structural' },
+  { id: 'ev_uaw',    source: 'uaw',         target: 'sec_service',      etype: 'structural' },
+  { id: 'ev_ws',     source: 'whale_scout', target: 'sec_service',      etype: 'structural' },
+  { id: 'ev_aadd',   source: 'aadd',        target: 'sec_service',      etype: 'structural' },
+
+  // ── Skill clusters → Skills hub ───────────────────────────────────────────
+  { id: 'ss_ml',     source: 'sk_ml',    target: 'sec_skills', etype: 'structural' },
+  { id: 'ss_geo',    source: 'sk_geo',   target: 'sec_skills', etype: 'structural' },
+  { id: 'ss_stats',  source: 'sk_stats', target: 'sec_skills', etype: 'structural' },
+  { id: 'ss_web',    source: 'sk_web',   target: 'sec_skills', etype: 'structural' },
+  { id: 'ss_ops',    source: 'sk_ops',   target: 'sec_skills', etype: 'structural' },
+
+  // ── Entries → skill clusters ──────────────────────────────────────────────
+  { id: 'sk_glac_ml',   source: 'glacier',     target: 'sk_ml',    etype: 'skill' },
+  { id: 'sk_glac_geo',  source: 'glacier',     target: 'sk_geo',   etype: 'skill' },
+  { id: 'sk_grape_ml',  source: 'grape',       target: 'sk_ml',    etype: 'skill' },
+  { id: 'sk_grape_geo', source: 'grape',       target: 'sk_geo',   etype: 'skill' },
+  { id: 'sk_grape_st',  source: 'grape',       target: 'sk_stats', etype: 'skill' },
+  { id: 'sk_kush_geo',  source: 'kush',        target: 'sk_geo',   etype: 'skill' },
+  { id: 'sk_kush_st',   source: 'kush',        target: 'sk_stats', etype: 'skill' },
+  { id: 'sk_kush_ml',   source: 'kush',        target: 'sk_ml',    etype: 'skill' },
+  { id: 'sk_js_geo',    source: 'javascript',  target: 'sk_geo',   etype: 'skill' },
+  { id: 'sk_js_st',     source: 'javascript',  target: 'sk_stats', etype: 'skill' },
+  { id: 'sk_js_ml',     source: 'javascript',  target: 'sk_ml',    etype: 'skill' },
+  { id: 'sk_sno_geo',   source: 'snotrac',     target: 'sk_geo',   etype: 'skill' },
+  { id: 'sk_sno_st',    source: 'snotrac',     target: 'sk_stats', etype: 'skill' },
+  { id: 'sk_sfm_ml',    source: 'sf_majick',   target: 'sk_ml',    etype: 'skill' },
+  { id: 'sk_sfm_st',    source: 'sf_majick',   target: 'sk_stats', etype: 'skill' },
+  { id: 'sk_rf_web',    source: 'rippleforge', target: 'sk_web',   etype: 'skill' },
+  { id: 'sk_ag_web',    source: 'ai_glue',     target: 'sk_web',   etype: 'skill' },
+  { id: 'sk_ag_ml',     source: 'ai_glue',     target: 'sk_ml',    etype: 'skill' },
+  { id: 'sk_das_geo',   source: 'das',         target: 'sk_geo',   etype: 'skill' },
+  { id: 'sk_usaf_ops',  source: 'usaf',        target: 'sk_ops',   etype: 'skill' },
+  { id: 'sk_adm_ops',   source: 'uw_admin',    target: 'sk_ops',   etype: 'skill' },
+  { id: 'sk_rand_ops',  source: 'randys',      target: 'sk_ops',   etype: 'skill' },
+  { id: 'sk_iso_st',    source: 'uw_isolab',   target: 'sk_stats', etype: 'skill' },
+  { id: 'sk_ms_ml',     source: 'ms_uw',       target: 'sk_ml',    etype: 'skill' },
+  { id: 'sk_ms_geo',    source: 'ms_uw',       target: 'sk_geo',   etype: 'skill' },
+  { id: 'sk_ms_st',     source: 'ms_uw',       target: 'sk_stats', etype: 'skill' },
+  { id: 'sk_cert_ml',   source: 'ds_cert',     target: 'sk_ml',    etype: 'skill' },
+  { id: 'sk_cert_st',   source: 'ds_cert',     target: 'sk_stats', etype: 'skill' },
+  { id: 'sk_g2_ml',     source: 'glacier2',    target: 'sk_ml',    etype: 'skill' },
+  { id: 'sk_g2_geo',    source: 'glacier2',    target: 'sk_geo',   etype: 'skill' },
+  { id: 'sk_g2_st',     source: 'glacier2',    target: 'sk_stats', etype: 'skill' },
+  { id: 'sk_su_st',     source: 'stat_unique', target: 'sk_stats', etype: 'skill' },
+  { id: 'sk_su_web',    source: 'stat_unique', target: 'sk_web',   etype: 'skill' },
+
+  // ── Career & research progression (directed) ──────────────────────────────
+  { id: 'r_usaf_bs',    source: 'usaf',        target: 'bs_uw',       etype: 'relation' },
+  { id: 'r_adm_bs',     source: 'uw_admin',    target: 'bs_uw',       etype: 'relation' },
+  { id: 'r_iso_ms',     source: 'uw_isolab',   target: 'ms_uw',       etype: 'relation' },
+  { id: 'r_ms_glac',    source: 'ms_uw',       target: 'glacier',     etype: 'relation' },
+  { id: 'r_ms_grape',   source: 'ms_uw',       target: 'grape',       etype: 'relation' },
+  { id: 'r_das_glac',   source: 'das',         target: 'glacier',     etype: 'relation' },
+  { id: 'r_glac_jog',   source: 'glacier',     target: 'jog2026',     etype: 'relation' },
+  { id: 'r_glac_g2',    source: 'glacier',     target: 'glacier2',    etype: 'relation' },
+  { id: 'r_glac_agu',   source: 'glacier',     target: 'agu2022',     etype: 'relation' },
+  { id: 'r_grape_kush', source: 'grape',       target: 'kush',        etype: 'relation' },
+  { id: 'r_grape_js',   source: 'grape',       target: 'javascript',  etype: 'relation' },
+  { id: 'r_rf_ag',      source: 'rippleforge', target: 'ai_glue',     etype: 'relation' },
+  { id: 'r_ms_ta211',   source: 'ms_uw',       target: 'ta_ess211',   etype: 'relation' },
+  { id: 'r_ms_ta102',   source: 'ms_uw',       target: 'ta_ess102',   etype: 'relation' },
+  { id: 'r_ms_ta101',   source: 'ms_uw',       target: 'ta_ess101',   etype: 'relation' },
+  { id: 'r_ms_gpss',    source: 'ms_uw',       target: 'gpss',        etype: 'relation' },
+  { id: 'r_ms_uaw',     source: 'ms_uw',       target: 'uaw',         etype: 'relation' },
+  { id: 'r_usaf_aadd',  source: 'usaf',        target: 'aadd',        etype: 'relation' },
+  { id: 'r_adm_rand',   source: 'uw_admin',    target: 'randys',      etype: 'relation' },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+var activeTypes = {};
+for (var t in ENTRY_TYPES) activeTypes[t] = true;
+
+function isVisible(n) {
+  if (n.type === 'skill')   return true;
+  if (n.type === 'section') return n.sectionType === null || !!activeTypes[n.sectionType];
+  return !!activeTypes[n.type];
+}
+
+function buildElements() {
+  var els = [], ids = {};
+  for (var i = 0; i < NODES.length; i++) {
+    var n = NODES[i];
+    if (!isVisible(n)) continue;
+    ids[n.id] = true;
+    var size = n.type === 'section' ? 72 : n.type === 'skill' ? 66 :
+      ({ education:60, work:58, research:58, publication:58, teaching:54, service:55 }[n.type] || 56);
+    els.push({ data: { id:n.id, label:n.label, type:n.type, color:n.color, size:size, title:n.title, body:n.body }});
+  }
+  for (var j = 0; j < EDGES.length; j++) {
+    var e = EDGES[j];
+    if (ids[e.source] && ids[e.target])
+      els.push({ data: { id:e.id, source:e.source, target:e.target, etype:e.etype }});
+  }
+  return els;
+}
+
+var cy = null;
+
+function initGraph() {
+  if (cy) { cy.destroy(); cy = null; }
+  cy = cytoscape({
+    container: document.getElementById('cv-graph'),
+    elements: buildElements(),
+    layout: {
+      name: 'fcose',
+      animate: true,
+      animationDuration: 650,
+      randomize: true,
+      nodeRepulsion: 9000,
+      idealEdgeLength: 95,
+      edgeElasticity: 0.45,
+      nestingFactor: 0.1,
+      gravity: 0.28,
+      numIter: 2500,
+    },
+    style: [
+      { selector: 'node', style: {
+          'background-color':   'data(color)',
+          'label':              'data(label)',
+          'width':              'data(size)',
+          'height':             'data(size)',
+          'shape':              'ellipse',
+          'color':              '#dde',
+          'font-size':          10,
+          'text-wrap':          'wrap',
+          'text-max-width':     85,
+          'text-valign':        'center',
+          'text-halign':        'center',
+          'text-outline-color': '#050510',
+          'text-outline-width': 1.5,
+          'border-width':       1,
+          'border-color':       '#3a3a5a',
+      }},
+      { selector: 'node[type = "section"]', style: {
+          'shape':              'round-rectangle',
+          'font-size':          13,
+          'font-weight':        'bold',
+          'text-outline-width': 2,
+          'border-width':       2.5,
+          'border-color':       'data(color)',
+          'background-color':   '#10102a',
+          'color':              'data(color)',
+      }},
+      { selector: 'node[type = "skill"]', style: {
+          'shape': 'diamond',
+          'color': '#fff',
+          'font-size': 9,
+      }},
+      { selector: 'node[type = "work"]',     style: { 'shape': 'round-rectangle' }},
+      { selector: 'node[type = "research"]', style: { 'shape': 'round-rectangle' }},
+      { selector: 'node[type = "service"]',  style: { 'shape': 'hexagon' }},
+      { selector: 'edge', style: {
+          'curve-style':        'bezier',
+          'target-arrow-shape': 'none',
+          'width':              1,
+          'line-color':         '#3a3a60',
+          'opacity':            0.55,
+      }},
+      { selector: 'node.selected', style: { 'border-width': 3.5, 'border-color': '#fff' }},
+      { selector: 'node.neighbor', style: { 'border-width': 2,   'border-color': '#bbb' }},
+      { selector: 'node.dimmed',   style: { 'opacity': 0.15 }},
+      { selector: 'edge.active-edge', style: { 'line-color':'#8888cc', 'width':2, 'opacity':1 }},
+      { selector: 'edge.dimmed',   style: { 'opacity': 0.04 }},
+    ],
+  });
+
+  cy.on('tap', 'node', function (evt) {
+    var n = evt.target;
+    cy.elements().removeClass('selected neighbor dimmed active-edge');
+    cy.elements().not(n.closedNeighborhood()).not('edge').addClass('dimmed');
+    cy.edges().not(n.connectedEdges()).addClass('dimmed');
+    n.addClass('selected');
+    n.neighborhood('node').addClass('neighbor');
+    n.connectedEdges().addClass('active-edge');
+    document.getElementById('cv-panel-hint').style.display   = 'none';
+    document.getElementById('cv-panel-detail').style.display = 'block';
+    document.getElementById('cv-panel-title').textContent = n.data('title');
+    document.getElementById('cv-panel-body').textContent  = n.data('body');
+  });
+
+  cy.on('tap', function (evt) {
+    if (evt.target !== cy) return;
+    cy.elements().removeClass('selected neighbor dimmed active-edge');
+    document.getElementById('cv-panel-hint').style.display   = 'block';
+    document.getElementById('cv-panel-detail').style.display = 'none';
+  });
+}
+
+initGraph();
+
+// Legend
+var leg = '';
+for (var t in ENTRY_TYPES)
+  leg += '<div class="leg"><div class="leg-dot" style="background:' + ENTRY_TYPES[t].color + '"></div>' + ENTRY_TYPES[t].label + '</div>';
+leg += '<div class="leg"><div class="leg-diamond"></div>Skills</div>';
+document.getElementById('legend').innerHTML = leg;
+
+// Filters
+document.querySelectorAll('.cvf-btn[data-type]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var t = btn.getAttribute('data-type');
+    if (t === 'all') {
+      var anyOff = Object.keys(activeTypes).some(function(k){ return !activeTypes[k]; });
+      for (var k in activeTypes) activeTypes[k] = anyOff;
+      document.querySelectorAll('.cvf-btn[data-type]').forEach(function (b) {
+        if (b.getAttribute('data-type') !== 'all') b.classList.toggle('active', anyOff);
+      });
+    } else {
+      activeTypes[t] = !activeTypes[t];
+      btn.classList.toggle('active', activeTypes[t]);
+    }
+    initGraph();
+  });
+});
+
+})();
+</script>
+</body>
+</html>

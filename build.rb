@@ -39,7 +39,7 @@ SITE = {
 }
 
 # Pages to build from _pages/ (allowlist by basename, without extension)
-INCLUDE_PAGES = %w[about cv art charactermancer haikus projects 404].freeze
+INCLUDE_PAGES = %w[about art charactermancer haikus projects 404].freeze
 
 OUTPUT_DIR   = "_site"
 TEMPLATE_DIR = "templates"
@@ -129,7 +129,7 @@ FileUtils.rm_rf(OUTPUT_DIR)
 FileUtils.mkdir_p(OUTPUT_DIR)
 
 puts "==> Copying static assets"
-%w[assets images files].each do |dir|
+%w[assets images files cv].each do |dir|
   src = File.join(SRC_ROOT, dir)
   dst = File.join(OUTPUT_DIR, dir)
   FileUtils.cp_r(src, dst) if Dir.exist?(src)
