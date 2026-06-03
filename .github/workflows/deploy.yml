@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Redirect to simonhansedasi.com
 
 on:
   push:
@@ -15,21 +15,29 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.2"
-          bundler-cache: true
-
-      - name: Build site
-        run: bundle exec ruby build.rb
+      - name: Create redirect site
+        run: |
+          mkdir _site
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0; url=https://simonhansedasi.com">
+            <script>window.location.replace("https://simonhansedasi.com" + window.location.pathname + window.location.search);</script>
+          </head>
+          <body>
+            <p>Redirecting to <a href="https://simonhansedasi.com">simonhansedasi.com</a>...</p>
+          </body>
+          </html>
+          EOF
+          cp _site/index.html _site/404.html
 
       - uses: actions/configure-pages@v4
 
