@@ -16,7 +16,7 @@ main:
 
 #
   - title: "Portfolio"
-    url: http://simonhansedasi.github.io/portfolio/
+    url: /portfolio/
 #
   # - title: "Teaching"
   #   url: /haikus2/

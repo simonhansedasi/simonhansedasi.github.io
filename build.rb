@@ -33,7 +33,7 @@ SITE = {
   "nav" => [
     { "title" => "Projects",  "url" => "/projects/" },
     { "title" => "Art",       "url" => "/art/" },
-    { "title" => "Portfolio", "url" => "http://simonhansedasi.github.io/portfolio/" },
+    { "title" => "Portfolio", "url" => "/portfolio/" },
     { "title" => "CV",        "url" => "/cv/" }
   ]
 }
