@@ -1,42 +1,40 @@
 document.addEventListener('DOMContentLoaded', function() {
-  async function fetchRandomContent() {
+  async function fetchContent() {
     try {
-      console.log('Starting fetch for JSON data');
-
-      // Fetch data from the JSON file
       const response = await fetch('/assets/art.json');
       if (!response.ok) throw new Error('Failed to fetch data');
-
       const data = await response.json();
-      console.log('Fetched data:', data);
 
-      // Extract haikus and images
       const haikus = data.haikus;
       const images = data.images;
-      console.log('Extracted haikus:', haikus);
-      console.log('Extracted images:', images);
 
       if (!Array.isArray(haikus) || !Array.isArray(images)) {
         throw new Error('Data is not in the expected format');
       }
 
-      // Select random haiku and image
-      const randomHaiku = haikus[Math.floor(Math.random() * haikus.length)];
-      const randomImage = images[Math.floor(Math.random() * images.length)];
+      // Find today's haiku from 2022 (try 2022 first, fall back to 2023)
+      const today = new Date();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day   = String(today.getDate()).padStart(2, '0');
 
-      console.log('Selected haiku:', randomHaiku);
-      console.log('Selected image:', randomImage);
+      const date2022 = `2022/${month}/${day}`;
+      const date2023 = `2023/${month}/${day}`;
 
-      // Convert newlines to <br> tags
-      const formattedContent = randomHaiku.content.replace(/\n/g, '<br>');
+      const haiku = haikus.find(h => h.date === date2022)
+                 || haikus.find(h => h.date === date2023)
+                 || haikus[0];
 
-      // Update HTML with the fetched data
+      const formattedContent = haiku.content.replace(/\n/g, '<br>');
+
       document.getElementById('haiku-container').innerHTML = `
-        <p><strong>Date:</strong> ${randomHaiku.date}</p>
-        <p><strong>Number:</strong> ${randomHaiku.number}</p>
+        <p><em>${haiku.date}</em></p>
         <p>${formattedContent}</p>
       `;
-      document.getElementById('image-container').innerHTML = `<img src="${randomImage}" alt="Random Art Image">`;
+
+      // Random image
+      const randomImage = images[Math.floor(Math.random() * images.length)];
+      document.getElementById('image-container').innerHTML =
+        `<img src="${randomImage}" alt="Math art">`;
 
     } catch (error) {
       console.error('Error fetching content:', error);
@@ -45,5 +43,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  fetchRandomContent();
+  fetchContent();
 });

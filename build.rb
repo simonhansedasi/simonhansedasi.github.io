@@ -32,6 +32,7 @@ SITE = {
   },
   "nav" => [
     { "title" => "Projects",  "url" => "/projects/" },
+    { "title" => "Apps",      "url" => "/apps/" },
     { "title" => "Art",       "url" => "/art/" },
     { "title" => "Portfolio", "url" => "/portfolio/" },
     { "title" => "CV",        "url" => "/cv/" }
@@ -39,7 +40,7 @@ SITE = {
 }
 
 # Pages to build from _pages/ (allowlist by basename, without extension)
-INCLUDE_PAGES = %w[about art charactermancer haikus projects 404].freeze
+INCLUDE_PAGES = %w[about art charactermancer haikus projects apps homefront garden 404].freeze
 
 OUTPUT_DIR   = "_site"
 TEMPLATE_DIR = "templates"
@@ -150,13 +151,23 @@ projects = Dir.glob(File.join(SRC_ROOT, "_projects/*.md")).sort.reverse.map do |
 end.compact
 
 puts "==> Collecting haikus"
-haikus = Dir.glob(File.join(SRC_ROOT, "_haikus/*.md")).sort.reverse.map do |f|
+haikus = Dir.glob(File.join(SRC_ROOT, "_haikus/*.md")).sort.map do |f|
   raw = File.read(f)
   fm, body = parse_front_matter(raw)
   next unless fm["permalink"]
 
   { "title" => fm["title"], "url" => fm["permalink"], "body" => body }
 end.compact
+
+puts "==> Collecting homefront posts"
+homefront = Dir.glob(File.join(SRC_ROOT, "_homefront/*.md")).sort.reverse.map do |f|
+  raw = File.read(f)
+  fm, body = parse_front_matter(raw)
+  next unless fm["permalink"]
+
+  stripped = strip_liquid(body)
+  { "title" => fm["title"], "url" => fm["permalink"], "date" => fm["date"], "html" => md_to_html(stripped) }
+end.compact.sort_by { |p| p["date"].to_s }.reverse
 
 # ---------------------------------------------------------------------------
 # Render collection item pages
@@ -174,12 +185,24 @@ end
 
 puts "==> Rendering haiku pages"
 haikus.each do |h|
+  sections = h["body"].split(/\n---\n/)
+  reversed = sections.reverse.join("\n---\n")
   html = build_page(
     permalink: h["url"],
     title:     h["title"],
-    content:   md_to_html(h["body"])
+    content:   md_to_html(reversed)
   )
   write_page(out_path(h["url"]), html)
+end
+
+puts "==> Rendering homefront pages"
+homefront.each do |p|
+  html = build_page(
+    permalink: p["url"],
+    title:     p["title"],
+    content:   p["html"]
+  )
+  write_page(out_path(p["url"]), html)
 end
 
 # ---------------------------------------------------------------------------
@@ -207,6 +230,14 @@ def haikus_list_html(haikus)
   "<ul class=\"archive-list\">\n    #{items}\n  </ul>"
 end
 
+def homefront_list_html(homefront)
+  items = homefront.map do |p|
+    date = p["date"] ? " <small>(#{p['date']})</small>" : ""
+    "<li><a href=\"#{p['url']}\">#{p['title']}</a>#{date}</li>"
+  end.join("\n    ")
+  "<ul class=\"archive-list\">\n    #{items}\n  </ul>"
+end
+
 Dir.glob(File.join(SRC_ROOT, "_pages/**/*")).sort.each do |file|
   next unless File.file?(file)
 
@@ -226,6 +257,8 @@ Dir.glob(File.join(SRC_ROOT, "_pages/**/*")).sort.each do |file|
     projects_list_html(projects)
   when "haikus"
     haikus_list_html(haikus)
+  when "homefront"
+    homefront_list_html(homefront)
   else
     # Strip Liquid from all other pages
     body = strip_liquid(body)

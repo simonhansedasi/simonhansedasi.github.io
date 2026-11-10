@@ -203,6 +203,9 @@ collections:
   haikus2:
     output: true
     permalink: /:collection/:path/
+  homefront:
+    output: true
+    permalink: /:collection/:path/
 
 # Defaults
 defaults:
@@ -283,6 +286,15 @@ defaults:
       layout: single
       author_profile: true
       share: true
+  # _homefront
+  - scope:
+      path: ""
+      type: homefront
+    values:
+      layout: single
+      author_profile: true
+      share: false
+      comments: false
 
 # Sass/SCSS
 sass:
