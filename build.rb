@@ -40,7 +40,7 @@ SITE = {
 }
 
 # Pages to build from _pages/ (allowlist by basename, without extension)
-INCLUDE_PAGES = %w[about art charactermancer haikus projects apps homefront garden 404].freeze
+INCLUDE_PAGES = %w[about art charactermancer haikus projects apps homefront 404].freeze
 
 OUTPUT_DIR   = "_site"
 TEMPLATE_DIR = "templates"
